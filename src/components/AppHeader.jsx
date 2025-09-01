@@ -1,5 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
+// CSS
+import "./AppHeaderCSS/AppHeader.css"
+
 const AppHeader = () => {
     const linkNav = [
     {
@@ -9,6 +12,10 @@ const AppHeader = () => {
     {
         title: "Lista delle IA",
         url: "/listaia"
+    },
+    {
+        title: "Preferiti",
+        url: "/preferiti"
     }]
 
 
