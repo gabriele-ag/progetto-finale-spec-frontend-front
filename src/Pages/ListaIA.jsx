@@ -5,6 +5,7 @@ const ListaIA = () => {
 
     const [search, setSearch] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("")
+    const [sortedTitle, setSortedTitle] = useState(true)
 
     const { listAI } = useContext(GlobalContext)
 
@@ -12,14 +13,27 @@ const ListaIA = () => {
         event.preventDefault()
     }
 
+
+    // Filtri per ricerca e ordinamento
     const filteredAI = useMemo(() => {
-        return listAI.filter((elem) => {
+
+        // Filtri per ricerca titolo e per selezione categoria
+        const filtered = listAI.filter((elem) => {
             const matchText = elem.title.toLowerCase().includes(search.toLowerCase()) 
             const matchSelectedCategory = selectedCategory === "" || elem.category.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
 
             return matchText && matchSelectedCategory
         })
-    }, [listAI, search, selectedCategory])
+
+        // Ordinamento A-Z || Z-A
+        const sortedByTitle = [...filtered].sort((a,b) => {
+            return sortedTitle ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title)
+        })
+
+        return sortedByTitle
+
+    }, [listAI, search, selectedCategory, sortedTitle])
+
 
 
 
@@ -60,6 +74,11 @@ const ListaIA = () => {
                     </select>
 
                 </form>
+                
+                {/* Pulsante per ordinamento */}
+                <button onClick={() => setSortedTitle(!sortedTitle)}>
+                    {sortedTitle ? "A-Z" : "Z-A"}
+                </button>
 
                 {/* Elenco delle IA */}
                 <ul>
