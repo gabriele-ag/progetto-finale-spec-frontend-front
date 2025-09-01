@@ -1,4 +1,25 @@
 header {
-    background-color: rgb(247, 154, 41);
+    background-color: rgb(67, 101, 250);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
+.flex-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.navlink {
+    color: aliceblue;
+    font-size: 17px;
+}
+
+.navlink:hover {
+    color: rgb(29, 29, 29);
+}

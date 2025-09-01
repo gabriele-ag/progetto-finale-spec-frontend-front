@@ -22,16 +22,20 @@ const AppHeader = () => {
 
     return (
         <header>
+            
+            <div>
+                <h2>Logo</h2>
+            </div>
 
             {/* Barra di navigazione */}
-            <nav>
-                <ul>
+            <nav>               
+                <ul className="flex-nav-header">
                     {linkNav.map((curLink, index) => (
                         <li key={index}>
-                            <NavLink to={curLink.url}>{curLink.title}</NavLink>
+                            <NavLink className="navlink" to={curLink.url}>{curLink.title}</NavLink>
                         </li>
                     ))}
-                </ul>
+                </ul>  
             </nav>
         </header>
     );
