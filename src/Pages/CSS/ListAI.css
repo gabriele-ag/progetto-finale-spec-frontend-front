@@ -1,3 +1,26 @@
 .section-listai {
     padding-top: 50px;
 }
+
+.box-input {
+    margin-bottom: 40px;
+}
+
+.search-input {
+    width: 40%;
+    margin-right: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.category-input {
+    width: 30%;
+}
+
+.btn-sort {
+    background-color: transparent;
+    border: transparent;
+}

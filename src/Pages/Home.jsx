@@ -9,7 +9,9 @@ const Home = () => {
                 <div>
                     <h1 className="home-title">Benvenuto nell'AI Compare</h1>
                     <p className="home-subtitle">Semplice.Veloce.Affidabile</p>
-                    <Link className="home-btn">Prova ora!</Link>
+                    <div className="btn-flex">
+                        <Link className="home-btn">Prova ora!</Link>
+                    </div>
                 </div>
             </div>
         </section>        

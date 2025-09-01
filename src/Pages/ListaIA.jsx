@@ -54,40 +54,44 @@ const ListaIA = () => {
                     <div className="container">
 
                     {/* Input per i filtri */}
-                        <form onSubmit={handleForm}>
+                        <div className="box-input">
+                            <form onSubmit={handleForm}>
 
-                            <input 
-                            type="text"
-                            placeholder="Cerca qui la tua IA..."
-                            value={search}
-                            onChange={(event) => setSearch(event.target.value)}
-                            className="search-input" />
+                                <input 
+                                type="text"
+                                placeholder="Cerca qui la tua IA..."
+                                value={search}
+                                onChange={(event) => setSearch(event.target.value)}
+                                className="search-input" />
 
-                            <select 
-                            value={selectedCategory}
-                            onChange={(event) => setSelectedCategory(event.target.value)}
-                            className="category-input"
-                            >
-                                <option value="">Tutte le categorie</option>
-                                <option value="Multimedia & Editing">Multimedia & Editing</option>
-                                <option value="Design & Presentazioni">Design & Presentazioni</option>
-                                <option value="Assistenti Generali">Assistenti Generali</option>
-                                <option value="Scrittura & Contenuti">Scrittura & Contenuti</option>
-                                <option value="Performance Management">Performance Management</option>
-                                <option value="Ricerca AI">Ricerca AI</option>
-                                <option value="Marketing & SEO">Marketing & SEO</option>
+                                <select 
+                                value={selectedCategory}
+                                onChange={(event) => setSelectedCategory(event.target.value)}
+                                className="category-input"
+                                >
+                                    <option value="">Tutte le categorie</option>
+                                    <option value="Multimedia & Editing">Multimedia & Editing</option>
+                                    <option value="Design & Presentazioni">Design & Presentazioni</option>
+                                    <option value="Assistenti Generali">Assistenti Generali</option>
+                                    <option value="Scrittura & Contenuti">Scrittura & Contenuti</option>
+                                    <option value="Performance Management">Performance Management</option>
+                                    <option value="Ricerca AI">Ricerca AI</option>
+                                    <option value="Marketing & SEO">Marketing & SEO</option>
 
-                            </select>
+                                </select>
 
-                        </form>
+                            </form>
                         
-                        {/* Pulsante per ordinamento */}
-                        <button 
-                        className="btn-sort" 
-                        onClick={() => setSorted(!sorted)}
-                        >
-                            {sorted ? "A-Z" : "Z-A"}
-                        </button>
+                        
+                            {/* Pulsante per ordinamento */}
+                            
+                            <button 
+                            className="btn-sort" 
+                            onClick={() => setSorted(!sorted)}
+                            >
+                                {sorted ? "A-Z" : "Z-A"}
+                            </button>
+                        </div>
 
                         {/* Elenco delle IA */}
                         <ul>
