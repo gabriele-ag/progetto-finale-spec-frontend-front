@@ -1,5 +1,5 @@
 import { GlobalContext } from "../contexts/GlobalContext"
-import { useState, useMemo, useContext, useEffect } from "react"
+import { useState, useContext, useEffect } from "react"
 
 import { useParams, Link } from "react-router-dom"
 
