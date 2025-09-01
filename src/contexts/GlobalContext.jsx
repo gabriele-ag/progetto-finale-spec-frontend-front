@@ -9,11 +9,11 @@ const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
     
-    const {listAI, getListAI, getSingleListAI} = useList()
+    const {listAI, getListAI, getSingleAI} = useList()
 
     return (
         <GlobalContext.Provider
-            value={{listAI, getListAI, getSingleListAI}}
+            value={{listAI, getListAI, getSingleAI}}
         >
             {children}
         </GlobalContext.Provider>

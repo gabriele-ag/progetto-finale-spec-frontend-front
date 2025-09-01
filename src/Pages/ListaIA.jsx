@@ -1,11 +1,12 @@
 import { GlobalContext } from "../contexts/GlobalContext"
 import { useState, useMemo, useContext } from "react"
+import { Link } from "react-router-dom"
 
 const ListaIA = () => {
 
     const [search, setSearch] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("")
-    const [sortedTitle, setSortedTitle] = useState(true)
+    const [sorted, setSorted] = useState(true)
 
     const { listAI } = useContext(GlobalContext)
 
@@ -27,12 +28,12 @@ const ListaIA = () => {
 
         // Ordinamento A-Z || Z-A
         const sortedByTitle = [...filtered].sort((a,b) => {
-            return sortedTitle ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title)
+            return sorted ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title)
         })
 
         return sortedByTitle
 
-    }, [listAI, search, selectedCategory, sortedTitle])
+    }, [listAI, search, selectedCategory, sorted])
 
 
 
@@ -69,16 +70,18 @@ const ListaIA = () => {
                 </form>
                 
                 {/* Pulsante per ordinamento */}
-                <button onClick={() => setSortedTitle(!sortedTitle)}>
-                    {sortedTitle ? "A-Z" : "Z-A"}
+                <button onClick={() => setSorted(!sorted)}>
+                    {sorted ? "A-Z" : "Z-A"}
                 </button>
 
                 {/* Elenco delle IA */}
                 <ul>
                     {filteredAI.map((curList) => (
                         <li key={curList.id}>
-                            <h2>{curList.title}</h2>
-                            <p>{curList.category}</p>
+                            <Link to={`/listaia/${curList.id}`}>
+                                <h2>{curList.title}</h2>
+                                <p>{curList.category}</p>
+                            </Link>
                         </li>
                     ))}
                 </ul>

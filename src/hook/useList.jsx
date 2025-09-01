@@ -35,7 +35,7 @@ const useList = () => {
     
         
         // Chiamata API per la singola IA
-        const getSingleListAI = useCallback(async (id) => {
+        const getSingleAI = useCallback(async (id) => {
             
             try {
                 
@@ -49,7 +49,7 @@ const useList = () => {
                 // Verifico se i dati arrivano correttamente, in console
                 console.log(data)
                 
-                return data
+                return data.aiproduct
             } catch(error) {
                 throw new Error(`Impossibile recuperari i dati: ${error.message}`)
             } finally {
@@ -65,7 +65,7 @@ const useList = () => {
         return {
             listAI,
             getListAI,
-            getSingleListAI
+            getSingleAI
         }
 }
 
