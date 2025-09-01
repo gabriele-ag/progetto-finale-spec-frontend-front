@@ -4,6 +4,9 @@ import { useState, useMemo, useContext } from "react"
 // Import della card
 import CardAI from "../components/CardAI"
 
+// CSS
+import "./CSS/ListAI.css"
+
 const ListaIA = () => {
 
     const [search, setSearch] = useState("")
@@ -45,51 +48,64 @@ const ListaIA = () => {
 
             <main>
 
-                {/* Input per i filtri */}
-                <form onSubmit={handleForm}>
+                <section className="section-listai">
 
-                    <input 
-                    type="text"
-                    placeholder="Cerca qui la tua IA..."
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)} />
+                    {/* Container */}
+                    <div className="container">
 
-                    <select 
-                    value={selectedCategory}
-                    onChange={(event) => setSelectedCategory(event.target.value)}
-                    >
-                        <option value="">Tutte le categorie</option>
-                        <option value="Multimedia & Editing">Multimedia & Editing</option>
-                        <option value="Design & Presentazioni">Design & Presentazioni</option>
-                        <option value="Assistenti Generali">Assistenti Generali</option>
-                        <option value="Scrittura & Contenuti">Scrittura & Contenuti</option>
-                        <option value="Performance Management">Performance Management</option>
-                        <option value="Ricerca AI">Ricerca AI</option>
-                        <option value="Marketing & SEO">Marketing & SEO</option>
+                    {/* Input per i filtri */}
+                        <form onSubmit={handleForm}>
 
-                    </select>
+                            <input 
+                            type="text"
+                            placeholder="Cerca qui la tua IA..."
+                            value={search}
+                            onChange={(event) => setSearch(event.target.value)}
+                            className="search-input" />
 
-                </form>
-                
-                {/* Pulsante per ordinamento */}
-                <button onClick={() => setSorted(!sorted)}>
-                    {sorted ? "A-Z" : "Z-A"}
-                </button>
+                            <select 
+                            value={selectedCategory}
+                            onChange={(event) => setSelectedCategory(event.target.value)}
+                            className="category-input"
+                            >
+                                <option value="">Tutte le categorie</option>
+                                <option value="Multimedia & Editing">Multimedia & Editing</option>
+                                <option value="Design & Presentazioni">Design & Presentazioni</option>
+                                <option value="Assistenti Generali">Assistenti Generali</option>
+                                <option value="Scrittura & Contenuti">Scrittura & Contenuti</option>
+                                <option value="Performance Management">Performance Management</option>
+                                <option value="Ricerca AI">Ricerca AI</option>
+                                <option value="Marketing & SEO">Marketing & SEO</option>
 
-                {/* Elenco delle IA */}
-                <ul>
-                    {filteredAI.map((curElem) => (
-                        <li key={curElem.id}>
-                            {/* <Link to={`/listaia/${curList.id}`}> */}
-                                <CardAI 
-                                title={curElem.title}
-                                subtitle={curElem.category}
-                                details={curElem.id}
-                                />
-                            {/* </Link> */}
-                        </li>
-                    ))}
-                </ul>
+                            </select>
+
+                        </form>
+                        
+                        {/* Pulsante per ordinamento */}
+                        <button 
+                        className="btn-sort" 
+                        onClick={() => setSorted(!sorted)}
+                        >
+                            {sorted ? "A-Z" : "Z-A"}
+                        </button>
+
+                        {/* Elenco delle IA */}
+                        <ul>
+                            {filteredAI.map((curElem) => (
+                                <li key={curElem.id}>
+                                    {/* <Link to={`/listaia/${curList.id}`}> */}
+                                        <CardAI 
+                                        title={curElem.title}
+                                        subtitle={curElem.category}
+                                        details={curElem.id}
+                                        />
+                                    {/* </Link> */}
+                                </li>
+                            ))}
+                        </ul>
+
+                    </div>
+                </section>
 
             </main>
         </>

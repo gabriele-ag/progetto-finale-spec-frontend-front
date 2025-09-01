@@ -1,0 +1,27 @@
+.home-section {
+    padding-top: 200px;
+}
+
+.home-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-title {
+    font-size: 40px;
+    text-align: center;
+}
+
+.home-subtitle {
+    font-size: 20px;
+    text-align: center;
+}
+
+.home-btn {
+    background-color: rgb(32, 153, 92);
+    color: aliceblue;
+    border: 1px solid rgb(32, 153, 92);
+    border-radius: 20px;
+    padding: 10px;
+}

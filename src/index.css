@@ -17,3 +17,16 @@ a {
 ul {
     list-style: none;
 }
+
+body {
+    font-family: "Arimo", sans-serif;
+    font-optical-sizing: auto;
+}
+
+/* Utilities */
+
+.container {
+    margin: auto;
+    padding: 0;
+    max-width: 80%;
+}

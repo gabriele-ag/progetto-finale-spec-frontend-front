@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 // CSS
-import "./AppHeaderCSS/AppHeader.css"
+import "./CSS/AppHeader.css"
 
 const AppHeader = () => {
     const linkNav = [
@@ -24,7 +24,7 @@ const AppHeader = () => {
         <header>
             
             <div>
-                <h2>Logo</h2>
+                <h2 className="logo">Logo</h2>
             </div>
 
             {/* Barra di navigazione */}
