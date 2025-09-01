@@ -56,20 +56,13 @@ const ListaIA = () => {
                     onChange={(event) => setSelectedCategory(event.target.value)}
                     >
                         <option value="">Tutte le categorie</option>
-                        <option value="Generazione testo">Generazione testo</option>
-                        <option value="Generazione Immagini">Generazione Immagini</option>
-                        <option value="Video AI">Video AI</option>
-                        <option value="Copywriting">Copywriting</option>
-                        <option value="Design Assistito">Design Assistito</option>
-                        <option value="Produttività">Produttività</option>
-                        <option value="Correzione Testi">Correzione Testi</option>
-                        <option value="Video Editing AI">Video Editing AI</option>
-                        <option value="Video da Testo">Video da Testo</option>
-                        <option value="Audio/Video Editing">Audio/Video Editing</option>
-                        <option value="Presentazioni">Presentazioni</option>
-                        <option value="SEO AI">SEO AI</option>
+                        <option value="Multimedia & Editing">Multimedia & Editing</option>
+                        <option value="Design & Presentazioni">Design & Presentazioni</option>
+                        <option value="Assistenti Generali">Assistenti Generali</option>
+                        <option value="Scrittura & Contenuti">Scrittura & Contenuti</option>
+                        <option value="Performance Management">Performance Management</option>
                         <option value="Ricerca AI">Ricerca AI</option>
-                        <option value="Parafrasi">Parafrasi</option>
+                        <option value="Marketing & SEO">Marketing & SEO</option>
 
                     </select>
 
