@@ -1,6 +1,8 @@
 import { GlobalContext } from "../contexts/GlobalContext"
 import { useState, useMemo, useContext } from "react"
-import { Link } from "react-router-dom"
+
+// Import della card
+import CardAI from "../components/CardAI"
 
 const ListaIA = () => {
 
@@ -76,12 +78,15 @@ const ListaIA = () => {
 
                 {/* Elenco delle IA */}
                 <ul>
-                    {filteredAI.map((curList) => (
-                        <li key={curList.id}>
-                            <Link to={`/listaia/${curList.id}`}>
-                                <h2>{curList.title}</h2>
-                                <p>{curList.category}</p>
-                            </Link>
+                    {filteredAI.map((curElem) => (
+                        <li key={curElem.id}>
+                            {/* <Link to={`/listaia/${curList.id}`}> */}
+                                <CardAI 
+                                title={curElem.title}
+                                subtitle={curElem.category}
+                                details={curElem.id}
+                                />
+                            {/* </Link> */}
                         </li>
                     ))}
                 </ul>
