@@ -131,8 +131,8 @@ const ListaIA = () => {
                             <button
                                 className="btn-confronta"
                                 onClick={() => {
-                                const ids = selectedAI.map(ai => ai.id);
-                                navigate(`/confronto?id1=${ids[0]}&id2=${ids[1]}`);
+                                const ids = selectedAI.map(ai => ai.id);                                
+                                    navigate(`/confronto?id1=${ids[0]}&id2=${ids[1]}`);
                                 }}
                             >
                                 Confronta ora

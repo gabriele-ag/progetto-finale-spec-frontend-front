@@ -42,7 +42,7 @@ const PaginaConfronto = () => {
                 <h1 className="confronto-title">Confronta AI</h1>
 
                 {loading ? (
-                    <p>Caricamente in corso...</p>
+                    <p>Caricamento in corso...</p>
                 ) : (
                     <>
                     {selectedAI.length === 2 && (
@@ -52,6 +52,7 @@ const PaginaConfronto = () => {
                                 key={curElem.id}
                                 title={curElem.title}
                                 subtitle={curElem.category}
+                                details={curElem.id}
                                 />
 
                             ))}

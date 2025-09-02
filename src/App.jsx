@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import GuestLayout from "./layouts/GuestLayout"
 
 // importo le pagine
-import Home from "./pages/Home"
+import Home from "./Pages/Home"
 import ListaIA from "./Pages/ListaIA"
-import DettagliIA from "./pages/DettagliIA"
-import Preferiti from "./pages/Preferiti"
+import DettagliIA from "./Pages/DettagliIA"
+import Preferiti from "./Pages/Preferiti"
 import PaginaConfronto from "./Pages/PaginaConfronto"
 
 // importo i dati globalmente
