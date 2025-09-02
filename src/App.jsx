@@ -5,7 +5,7 @@ import GuestLayout from "./layouts/GuestLayout"
 
 // importo le pagine
 import Home from "./pages/Home"
-import ListaIA from "./pages/ListaIA"
+import ListaIA from "./Pages/ListaIA"
 import DettagliIA from "./pages/DettagliIA"
 import Preferiti from "./pages/Preferiti"
 import PaginaConfronto from "./Pages/PaginaConfronto"

@@ -11,7 +11,7 @@ const PaginaConfronto = () => {
     const id2 = searchParams.get("id2")
 
     const { getSingleAI } = useList()
-    const [selectedAI, setSelectedAI] = useState([]);
+    const [selectedAI, setSelectedAI] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {

@@ -18,7 +18,7 @@ const ListaIA = () => {
 
     const navigate = useNavigate();
 
-    const { listAI } = useContext(GlobalContext)
+    const { listAI, addToFavorites, removeFromFavorites, favorites} = useContext(GlobalContext)
 
     const handleForm = (event) => {
         event.preventDefault()
@@ -118,11 +118,15 @@ const ListaIA = () => {
                                         <button onClick={() => toggleAISelected(curElem)}>
                                             {selectedAI.find(curItem => curItem.id === curElem.id) ? "Rimuovi" : "Metti a confronto"}
                                         </button>
+
+                                        
+                                        <button onClick={() => addToFavorites(curElem)}>Aggiungi ai Preferiti</button>
                                     {/* </Link> */}
                                 </li>
                             ))}
                         </ul>
-
+                        
+                        {/* Pulsante per il confronto */}
                         {selectedAI.length >= 2 && (
                             <button
                                 className="btn-confronta"

@@ -3,6 +3,7 @@ import {useState, useEffect, useCallback} from "react"
 const useList = () => {
 
     const [listAI, setListAI] = useState([])
+    const [favorites, setFavorites] = useState([])
        
         // Importo l'URL dal .env
         const urlList = import.meta.env.VITE_API_URL;
@@ -61,11 +62,27 @@ const useList = () => {
             getListAI()
         }, [getListAI])
 
+
+        // Funzioni per l'aggiunzione e la rimozione dei preferiti
+        const addToFavorites = (curElem) => {
+            console.log("Aggiungo ai preferiti:", curElem);
+            setFavorites((prev) => {
+            const alreadyExists = prev.some((item) => item.id === curElem.id);
+            return alreadyExists ? prev : [...prev, curElem];
+            });
+        }
+
+        const removeFromFavorites = (curElem) => {
+            setFavorites((prev) => prev.filter((curFav) => curFav.id !== curElem.id))
+        }
         
         return {
             listAI,
             getListAI,
-            getSingleAI
+            getSingleAI,
+            addToFavorites,
+            removeFromFavorites,
+            favorites
         }
 }
 
