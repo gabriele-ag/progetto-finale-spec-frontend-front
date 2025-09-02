@@ -16,6 +16,10 @@ const AppHeader = () => {
     {
         title: "Preferiti",
         url: "/preferiti"
+    },
+    {
+        title: "Confronta!",
+        url: "/confronto"
     }]
 
 

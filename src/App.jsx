@@ -8,6 +8,7 @@ import Home from "./pages/Home"
 import ListaIA from "./pages/ListaIA"
 import DettagliIA from "./pages/DettagliIA"
 import Preferiti from "./pages/Preferiti"
+import PaginaConfronto from "./Pages/PaginaConfronto"
 
 // importo i dati globalmente
 import { GlobalProvider } from "./contexts/GlobalContext"
@@ -26,6 +27,7 @@ function App() {
             <Route path="/listaia" element={<ListaIA />} />
             <Route path="/listaia/:id" element={<DettagliIA/>}/>
             <Route path="/preferiti" element={<Preferiti/>}/>
+            <Route path="/confronto" element={<PaginaConfronto/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

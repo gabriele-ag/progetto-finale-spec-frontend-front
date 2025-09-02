@@ -1,6 +1,8 @@
 import { GlobalContext } from "../contexts/GlobalContext"
 import { useState, useMemo, useContext } from "react"
 
+import { useNavigate } from "react-router-dom"
+
 // Import della card
 import CardAI from "../components/CardAI"
 
@@ -12,6 +14,9 @@ const ListaIA = () => {
     const [search, setSearch] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("")
     const [sorted, setSorted] = useState(true)
+    const [selectedAI, setSelectedAI] = useState([])
+
+    const navigate = useNavigate();
 
     const { listAI } = useContext(GlobalContext)
 
@@ -41,6 +46,13 @@ const ListaIA = () => {
     }, [listAI, search, selectedCategory, sorted])
 
 
+     const toggleAISelected = (elemAI) => {
+        if (selectedAI.find(curItem => curItem.id === elemAI.id)) {
+            setSelectedAI(selectedAI.filter(curItem => curItem.id !== elemAI.id));
+        } else {
+            setSelectedAI([...selectedAI, elemAI]);
+        }
+    }
 
 
     return (
@@ -103,10 +115,25 @@ const ListaIA = () => {
                                         subtitle={curElem.category}
                                         details={curElem.id}
                                         />
+                                        <button onClick={() => toggleAISelected(curElem)}>
+                                            {selectedAI.find(curItem => curItem.id === curElem.id) ? "Rimuovi" : "Metti a confronto"}
+                                        </button>
                                     {/* </Link> */}
                                 </li>
                             ))}
                         </ul>
+
+                        {selectedAI.length >= 2 && (
+                            <button
+                                className="btn-confronta"
+                                onClick={() => {
+                                const ids = selectedAI.map(ai => ai.id);
+                                navigate(`/confronto?id1=${ids[0]}&id2=${ids[1]}`);
+                                }}
+                            >
+                                Confronta ora
+                            </button>
+                        )}
 
                     </div>
                 </section>
