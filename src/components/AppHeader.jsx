@@ -31,8 +31,8 @@ const AppHeader = () => {
             <nav>               
                 <ul className="flex-nav-header">
                     {linkNav.map((curLink, index) => (
-                        <li key={index}>
-                            <NavLink className="navlink" to={curLink.url}>{curLink.title}</NavLink>
+                        <li key={index}>                            
+                                <NavLink className="navlink" to={curLink.url}>{curLink.title}</NavLink>
                         </li>
                     ))}
                 </ul>  

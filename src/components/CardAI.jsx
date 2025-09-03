@@ -25,7 +25,8 @@ const cardAI = ({title, subtitle, details, toggle, addRemCompare, id}) => {
             to={`/listaia/${details}`}
             >Vedi dettagli</Link>
             <button className="btn-compare" onClick={toggle}>{addRemCompare}</button>                                       
-            <button className="btn-fav" onClick={toggleFavorite}>{isFavorite ? <i className="fa-solid fa-star"></i> : <i className="fa-regular fa-star"></i> }</button>
+            <button className="btn-fav" onClick={toggleFavorite}>{isFavorite ? <i className="fa-solid fa-star btn-fav-empty"></i> : <i className="fa-regular fa-star btn-fav-full"></i> }</button>
+            <div className="card-separator"></div>
                                     
         </div>
         </>

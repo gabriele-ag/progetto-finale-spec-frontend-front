@@ -1,8 +1,10 @@
+import "./CSS/AppFooter.css"
+
 const AppFooter = () => {
     return (
-        <>
-            <h2>Ciao sono il piede di questo sito!</h2>
-        </>
+        <footer>
+            <h4>@ Created by Gabriele Ardizzone</h4>
+        </footer>
     )
 }
 

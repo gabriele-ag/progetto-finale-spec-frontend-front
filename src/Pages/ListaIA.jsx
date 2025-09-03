@@ -8,6 +8,7 @@ import CardAI from "../components/CardAI"
 
 // CSS
 import "./CSS/ListAI.css"
+import ModalConfronto from "../components/ModalConfronto"
 
 const ListaIA = () => {
 
@@ -15,10 +16,12 @@ const ListaIA = () => {
     const [selectedCategory, setSelectedCategory] = useState("")
     const [sorted, setSorted] = useState(true)
     const [selectedAI, setSelectedAI] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [detailedAI, setDetailedAI] = useState([]);
 
     const navigate = useNavigate();
 
-    const { listAI } = useContext(GlobalContext)
+    const { listAI, getSingleAI } = useContext(GlobalContext)
 
     const handleForm = (event) => {
         event.preventDefault()
@@ -52,6 +55,14 @@ const ListaIA = () => {
         } else {
             setSelectedAI([...selectedAI, elemAI]);
         }
+    }
+
+    // Eseguo chiamata per prendere le info aggiuntive da mettere nel comparatore
+    const fetchDetailsForCompare = async () => {
+        const promises = selectedAI.map(curElem => getSingleAI(curElem.id));
+        const results = await Promise.all(promises)
+        setDetailedAI(results)
+        setIsModalOpen(true)
     }
 
 
@@ -117,10 +128,11 @@ const ListaIA = () => {
                                         details={curElem.id}
                                         toggle={() => toggleAISelected(curElem)}
                                         addRemCompare={selectedAI.find(curItem => curItem.id === curElem.id) ? "Rimuovi" : "Metti a confronto"}
-
-                                        />                                    
+                                        />
+                                                                           
                                     
                                 </li>
+                                
                             ))}
                         </ul>
                         
@@ -128,14 +140,16 @@ const ListaIA = () => {
                         {selectedAI.length >= 2 && (
                             <button
                                 className="btn-confronta"
-                                onClick={() => {
-                                const ids = selectedAI.map(ai => ai.id);                                
-                                    navigate(`/confronto?id1=${ids[0]}&id2=${ids[1]}`);
-                                }}
+                                onClick={fetchDetailsForCompare}
                             >
                                 Confronta ora
                             </button>
                         )}
+
+                        <ModalConfronto
+                        items={detailedAI}
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}/>
 
                     </div>
                 </section>
