@@ -24,6 +24,10 @@ body {
     background-color: #F5F5F5;
 }
 
+main {
+    padding: 150px 0;
+}
+
 /* Utilities */
 
 .container {

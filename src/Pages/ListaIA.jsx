@@ -10,6 +10,9 @@ import CardAI from "../components/CardAI"
 import "./CSS/ListAI.css"
 import ModalConfronto from "../components/ModalConfronto"
 
+// Import del Debounce
+import useDebounce from "../hook/useDebounce"
+
 const ListaIA = () => {
 
     const [search, setSearch] = useState("")
@@ -20,6 +23,8 @@ const ListaIA = () => {
     const [detailedAI, setDetailedAI] = useState([]);
 
     const navigate = useNavigate();
+    
+    const debounceSearch = useDebounce(search, 500)
 
     const { listAI, getSingleAI } = useContext(GlobalContext)
 
@@ -46,7 +51,7 @@ const ListaIA = () => {
 
         return sortedByTitle
 
-    }, [listAI, search, selectedCategory, sorted])
+    }, [listAI, search, selectedCategory, sorted, debounceSearch])
 
 
      const toggleAISelected = (elemAI) => {
@@ -131,22 +136,26 @@ const ListaIA = () => {
 
                         {/* Elenco delle IA */}
                         <ul>
-                            {filteredAI.map((curElem) => (
+                            {filteredAI.length === 0 ? (
+                                <p className="no-result-serch">Nessun risultato. Cosa stai cercando? 🤔</p>
+                            ) : (
+                                filteredAI.map((curElem) => (
                                 <li key={curElem.id}>
-                                    
-                                        <CardAI
-                                        id={curElem.id} 
-                                        title={curElem.title}
-                                        subtitle={curElem.category}
-                                        details={curElem.id}
-                                        toggle={() => toggleAISelected(curElem)}
-                                        addRemCompare={selectedAI.find(curItem => curItem.id === curElem.id) ? "Rimuovi" : "Metti a confronto"}
-                                        />
-                                                                           
-                                    
+                                    <CardAI
+                                    id={curElem.id}
+                                    title={curElem.title}
+                                    subtitle={curElem.category}
+                                    details={curElem.id}
+                                    toggle={() => toggleAISelected(curElem)}
+                                    addRemCompare={
+                                        selectedAI.find((curItem) => curItem.id === curElem.id)
+                                        ? "Rimuovi"
+                                        : "Metti a confronto"
+                                    }
+                                    />
                                 </li>
-                                
-                            ))}
+                                ))
+                            )}
                         </ul>
                         
                         
