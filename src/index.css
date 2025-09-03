@@ -21,6 +21,7 @@ ul {
 body {
     font-family: "Arimo", sans-serif;
     font-optical-sizing: auto;
+    background-color: #F5F5F5;
 }
 
 /* Utilities */

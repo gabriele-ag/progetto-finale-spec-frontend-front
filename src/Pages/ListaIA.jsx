@@ -18,7 +18,7 @@ const ListaIA = () => {
 
     const navigate = useNavigate();
 
-    const { listAI, addToFavorites, removeFromFavorites, favorites} = useContext(GlobalContext)
+    const { listAI } = useContext(GlobalContext)
 
     const handleForm = (event) => {
         event.preventDefault()
@@ -109,19 +109,17 @@ const ListaIA = () => {
                         <ul>
                             {filteredAI.map((curElem) => (
                                 <li key={curElem.id}>
-                                    {/* <Link to={`/listaia/${curList.id}`}> */}
-                                        <CardAI 
+                                    
+                                        <CardAI
+                                        id={curElem.id} 
                                         title={curElem.title}
                                         subtitle={curElem.category}
                                         details={curElem.id}
-                                        />
-                                        <button onClick={() => toggleAISelected(curElem)}>
-                                            {selectedAI.find(curItem => curItem.id === curElem.id) ? "Rimuovi" : "Metti a confronto"}
-                                        </button>
+                                        toggle={() => toggleAISelected(curElem)}
+                                        addRemCompare={selectedAI.find(curItem => curItem.id === curElem.id) ? "Rimuovi" : "Metti a confronto"}
 
-                                        
-                                        <button onClick={() => addToFavorites(curElem)}>Aggiungi ai Preferiti</button>
-                                    {/* </Link> */}
+                                        />                                    
+                                    
                                 </li>
                             ))}
                         </ul>

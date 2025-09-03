@@ -1,5 +1,11 @@
+:root {
+    --common-color-1: #181817;
+    --common-color-2: #F1D302;
+    --common-color-3: #00BFA6;
+    --common-color-4: #FFFFFF;
+}
+
 header {
-    background-color: rgb(18, 113, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,7 +16,7 @@ header {
 
 
 .logo {
-    color: aliceblue;
+    color: var(--common-color-1);
     font-size: 20px;
     font-weight: bold;
 }
@@ -23,10 +29,11 @@ header {
 }
 
 .navlink {
-    color: aliceblue;
+    color: var(--common-color-1);
     font-size: 15px;
+    transition: color 0.5s ease-in-out;
 }
 
 .navlink:hover {
-    color: rgb(250, 151, 39);
+    color: var(--common-color-3);
 }

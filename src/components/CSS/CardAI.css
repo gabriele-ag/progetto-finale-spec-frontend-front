@@ -1,0 +1,30 @@
+:root {
+    --common-color-1: #181817;
+    --common-color-2: #F1D302;
+    --common-color-3: #00BFA6;
+    --common-color-4: #FFFFFF;
+}
+
+.card-title {
+    font-size: 30px;
+}
+
+.card-subtitle {
+    font-size: 20px;
+}
+
+.btn-details {
+    border: 1px solid var(--common-color-3);
+    border-radius: 5px;
+    background-color: var(--common-color-3);
+    padding: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--common-color-4);
+    transition: color 0.5s ease-in-out;
+}
+
+.btn-details:hover {
+    color: var(--common-color-3);
+    background-color: var(--common-color-4);
+}

@@ -16,10 +16,6 @@ const AppHeader = () => {
     {
         title: "Preferiti",
         url: "/preferiti"
-    },
-    {
-        title: "Confronta!",
-        url: "/confronto"
     }]
 
 
@@ -28,7 +24,7 @@ const AppHeader = () => {
         <header>
             
             <div>
-                <h2 className="logo">Logo</h2>
+                <h2 className="logo">.compareIA</h2>
             </div>
 
             {/* Barra di navigazione */}
