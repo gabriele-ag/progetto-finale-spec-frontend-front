@@ -73,47 +73,60 @@ const ListaIA = () => {
 
                 <section className="section-listai">
 
+                    {/* Pulsante per il confronto */}
+                        {selectedAI.length >= 2 && (
+                            <button
+                                className="btn-confronta"
+                                onClick={fetchDetailsForCompare}
+                            >
+                                Confronta ora!
+                            </button>
+                        )}
+
                     {/* Container */}
                     <div className="container">
 
+
                     {/* Input per i filtri */}
-                        <div className="box-input">
-                            <form onSubmit={handleForm}>
+                        <div>
+                            <form className="box-input" onSubmit={handleForm}>
+                                <div>
+                                    <input 
+                                    type="text"
+                                    placeholder="Cerca qui la tua IA..."
+                                    value={search}
+                                    onChange={(event) => setSearch(event.target.value)}
+                                    className="search-input" />
 
-                                <input 
-                                type="text"
-                                placeholder="Cerca qui la tua IA..."
-                                value={search}
-                                onChange={(event) => setSearch(event.target.value)}
-                                className="search-input" />
+                                    <select 
+                                    value={selectedCategory}
+                                    onChange={(event) => setSelectedCategory(event.target.value)}
+                                    className="category-input"
+                                    >
+                                        <option value="">Tutte le categorie</option>
+                                        <option value="Multimedia & Editing">Multimedia & Editing</option>
+                                        <option value="Design & Presentazioni">Design & Presentazioni</option>
+                                        <option value="Assistenti Generali">Assistenti Generali</option>
+                                        <option value="Scrittura & Contenuti">Scrittura & Contenuti</option>
+                                        <option value="Performance Management">Performance Management</option>
+                                        <option value="Ricerca AI">Ricerca AI</option>
+                                        <option value="Marketing & SEO">Marketing & SEO</option>
 
-                                <select 
-                                value={selectedCategory}
-                                onChange={(event) => setSelectedCategory(event.target.value)}
-                                className="category-input"
-                                >
-                                    <option value="">Tutte le categorie</option>
-                                    <option value="Multimedia & Editing">Multimedia & Editing</option>
-                                    <option value="Design & Presentazioni">Design & Presentazioni</option>
-                                    <option value="Assistenti Generali">Assistenti Generali</option>
-                                    <option value="Scrittura & Contenuti">Scrittura & Contenuti</option>
-                                    <option value="Performance Management">Performance Management</option>
-                                    <option value="Ricerca AI">Ricerca AI</option>
-                                    <option value="Marketing & SEO">Marketing & SEO</option>
+                                    </select>
+                                </div>
 
-                                </select>
+                                {/* Pulsante per ordinamento */}
+                                <div>
+                                    Ordina da: 
+                                    <button 
+                                    className="btn-sort" 
+                                    onClick={() => setSorted(!sorted)}
+                                    >
+                                        {sorted ? <i class="fa-solid fa-arrow-up-a-z"></i> : <i class="fa-solid fa-arrow-down-z-a"></i>}
+                                    </button>
+                                </div>
 
                             </form>
-                        
-                        
-                            {/* Pulsante per ordinamento */}
-                            
-                            <button 
-                            className="btn-sort" 
-                            onClick={() => setSorted(!sorted)}
-                            >
-                                {sorted ? "A-Z" : "Z-A"}
-                            </button>
                         </div>
 
                         {/* Elenco delle IA */}
@@ -136,15 +149,7 @@ const ListaIA = () => {
                             ))}
                         </ul>
                         
-                        {/* Pulsante per il confronto */}
-                        {selectedAI.length >= 2 && (
-                            <button
-                                className="btn-confronta"
-                                onClick={fetchDetailsForCompare}
-                            >
-                                Confronta ora
-                            </button>
-                        )}
+                        
 
                         <ModalConfronto
                         items={detailedAI}

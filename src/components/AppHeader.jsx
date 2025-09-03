@@ -21,22 +21,21 @@ const AppHeader = () => {
 
 
     return (
-        <header>
-            
-            <div>
-                <h2 className="logo">.compareIA</h2>
-            </div>
+        <header>    
+                <div>
+                    <h2 className="logo"><i class="fa-solid fa-brain"></i></h2>
+                </div>
 
-            {/* Barra di navigazione */}
-            <nav>               
-                <ul className="flex-nav-header">
-                    {linkNav.map((curLink, index) => (
-                        <li key={index}>                            
-                                <NavLink className="navlink" to={curLink.url}>{curLink.title}</NavLink>
-                        </li>
-                    ))}
-                </ul>  
-            </nav>
+                {/* Barra di navigazione */}
+                <nav>               
+                    <ul className="flex-nav-header">
+                        {linkNav.map((curLink, index) => (
+                            <li key={index}>                            
+                                    <NavLink className="navlink" to={curLink.url}>{curLink.title}</NavLink>
+                            </li>
+                        ))}
+                    </ul>  
+                </nav>
         </header>
     );
 };
