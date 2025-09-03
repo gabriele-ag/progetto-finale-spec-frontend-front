@@ -24,7 +24,7 @@ const ListaIA = () => {
 
     const navigate = useNavigate();
     
-    const debounceSearch = useDebounce(search, 500)
+    const debounceSearch = useDebounce(search, 700)
 
     const { listAI, getSingleAI } = useContext(GlobalContext)
 
@@ -51,7 +51,7 @@ const ListaIA = () => {
 
         return sortedByTitle
 
-    }, [listAI, search, selectedCategory, sorted, debounceSearch])
+    }, [listAI, selectedCategory, sorted, debounceSearch])
 
 
      const toggleAISelected = (elemAI) => {
