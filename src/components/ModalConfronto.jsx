@@ -17,15 +17,15 @@ const ModalConfronto = ({isOpen, onClose, items}) => {
         const emptyIcon = 5 - fullIcon - (halfIcon ? 1 : 0)
 
         for (let i = 0; i < fullIcon; i++) {
-            icons.push(<i class="fa-solid fa-star"></i>)
+            icons.push(<i className="fa-solid fa-star"></i>)
         }
 
         if (halfIcon) {
-            icons.push(<i class="fa-solid fa-star-half-stroke"></i>)
+            icons.push(<i className="fa-solid fa-star-half-stroke"></i>)
         }
 
         for (let i = 0; i < emptyIcon; i++) {
-            icons.push(<i class="fa-regular fa-star"></i>)
+            icons.push(<i className="fa-regular fa-star"></i>)
         }
 
         return icons

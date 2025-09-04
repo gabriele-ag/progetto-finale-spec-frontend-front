@@ -11,14 +11,14 @@ const Preferiti = () => {
     const { favorites, removeFromFavorites } = useContext(GlobalContext);
 
     return (
-        <main>
+        <section className="fav-section">
             <div className="container">
                 <h2 className="fav-title">I tuoi preferiti <i className="fa-solid fa-star fav-star"></i></h2>
                 {favorites.length === 0 ? (
                     <>
                         <p className="fav-none">Oh no! Non ci sono ancora preferiti nella tua lista! </p>
                         <Link to={"/listaia"} className="fav-btn-list">Vai alla lista</Link>
-                        <i class="fa-solid fa-arrow-left"></i>
+                        <i className="fa-solid fa-arrow-left"></i>
                     </>
                 ) : (
                     <ul>
@@ -29,7 +29,7 @@ const Preferiti = () => {
                                     <p className="fav-category">{curElem.category}</p>
                                 </li>
                                 <div>
-                                    <button className="fav-btn-details">Vedi dettagli</button>
+                                    <Link to={`/listaia/${curElem.id}`} className="fav-btn-details">Vedi dettagli</Link>
                                     <button className="fav-btn-erase" onClick={() => removeFromFavorites(curElem)}>
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
@@ -39,7 +39,7 @@ const Preferiti = () => {
                     </ul>
                 )}
             </div>
-        </main>
+        </section>
     )
 }
 

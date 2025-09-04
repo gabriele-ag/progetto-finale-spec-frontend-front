@@ -127,7 +127,7 @@ const ListaIA = () => {
                                     className="btn-sort" 
                                     onClick={() => setSorted(!sorted)}
                                     >
-                                        {sorted ? <i class="fa-solid fa-arrow-up-a-z"></i> : <i class="fa-solid fa-arrow-down-z-a"></i>}
+                                        {sorted ? <i className="fa-solid fa-arrow-up-a-z"></i> : <i className="fa-solid fa-arrow-down-z-a"></i>}
                                     </button>
                                 </div>
 

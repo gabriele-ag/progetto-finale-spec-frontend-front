@@ -5,6 +5,10 @@
     --common-color-4: #FFFFFF;
 }
 
+.fav-section {
+    padding: 150px 0px;
+}
+
 .fav-flex-box {
     display: flex;
     justify-content: space-between;

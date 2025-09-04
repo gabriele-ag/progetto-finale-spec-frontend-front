@@ -5,6 +5,10 @@
     --common-color-4: #FFFFFF;
 }
 
+.section-listai {
+    padding: 150px 0px;
+}
+
 .box-input {
     display: flex;
     justify-content: space-between;

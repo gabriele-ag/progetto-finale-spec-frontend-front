@@ -23,7 +23,7 @@ const AppHeader = () => {
     return (
         <header>    
                 <div>
-                    <h2 className="logo"><i class="fa-solid fa-brain"></i></h2>
+                    <h2 className="logo"><i className="fa-solid fa-brain"></i></h2>
                 </div>
 
                 {/* Barra di navigazione */}
