@@ -17,15 +17,15 @@ const ModalConfronto = ({isOpen, onClose, items}) => {
         const emptyIcon = 5 - fullIcon - (halfIcon ? 1 : 0)
 
         for (let i = 0; i < fullIcon; i++) {
-            icons.push(<i className="fa-solid fa-star"></i>)
+            icons.push(<i key={`full-${i}`} className="fa-solid fa-star"></i>)
         }
 
         if (halfIcon) {
-            icons.push(<i className="fa-solid fa-star-half-stroke"></i>)
+            icons.push(<i key={halfIcon} className="fa-solid fa-star-half-stroke"></i>)
         }
 
         for (let i = 0; i < emptyIcon; i++) {
-            icons.push(<i className="fa-regular fa-star"></i>)
+            icons.push(<i key={`empty-${i}`} className="fa-regular fa-star"></i>)
         }
 
         return icons
@@ -34,7 +34,7 @@ const ModalConfronto = ({isOpen, onClose, items}) => {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button className="modal-btn-close" onClick={onClose}><i class="fa-solid fa-xmark"></i></button>
+                <button className="modal-btn-close" onClick={onClose}><i className="fa-solid fa-xmark"></i></button>
                 <h3 className="modal-title">Compara IA</h3>
                 <div className="modal-ai">
                     {maxItemsComparable.map((curItem) =>(

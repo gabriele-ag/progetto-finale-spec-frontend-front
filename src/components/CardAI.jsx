@@ -20,12 +20,14 @@ const cardAI = ({title, subtitle, details, toggle, addRemCompare, disabledCompar
         <div className="card-ai">            
             <h1 className="card-title">{title}</h1>
             <h3 className="card-subtitle">Pensato per: {subtitle}</h3>
-            <Link 
-            className="btn-details"
-            to={`/listaia/${details}`}
-            >Vedi dettagli</Link>
-            <button className={`btn-compare ${disabledCompare ? 'disabled' : ''}`} onClick={toggle} disabled={disabledCompare}>{addRemCompare}</button>                                       
-            <button className="btn-fav" onClick={toggleFavorite}>{isFavorite ? <i className="fa-solid fa-star btn-fav-empty"></i> : <i className="fa-regular fa-star btn-fav-full"></i> }</button>
+            <div className="card-btn-box">
+                <Link 
+                className="btn-details"
+                to={`/listaia/${details}`}
+                >Vedi dettagli</Link>
+                <button className={`btn-compare ${disabledCompare ? 'disabled' : ''}`} onClick={toggle} disabled={disabledCompare}>{addRemCompare}</button>                                       
+                <button className="btn-fav" onClick={toggleFavorite}>{isFavorite ? <i className="fa-solid fa-star btn-fav-empty"></i> : <i className="fa-regular fa-star btn-fav-full"></i> }</button>
+            </div>
             <div className="card-separator"></div>
                                     
         </div>

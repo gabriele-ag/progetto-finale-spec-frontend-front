@@ -6,7 +6,7 @@
 }
 
 .fav-section {
-    padding: 150px 0px;
+    padding: 120px 0px;
 }
 
 .fav-flex-box {
@@ -29,6 +29,13 @@
     margin-bottom: 20px;
 }
 
+.fav-btn-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
 .fav-btn-details {
     border: 1px solid var(--common-color-3);
     border-radius: 5px;
@@ -38,7 +45,6 @@
     font-size: 15px;
     font-weight: bold;
     transition: color 0.5s ease-in-out;
-    margin-right: 15px;
     cursor: pointer;
 }
 
@@ -53,7 +59,6 @@
     padding: 5px;
     border: 1px solid var(--common-color-1);
     border-radius: 5px;
-    margin-bottom: 10px;
     transition: color 0.5s ease-in-out;
     cursor: pointer;
 }
@@ -84,4 +89,22 @@
 .fav-star {
     color: var(--common-color-2);
     font-size: 20px;
+}
+
+@media screen and (max-width: 425px) {
+    .fav-ai-box {
+        width: 30%;
+    }
+
+    .fav-title-ai {
+        font-size: 14px;
+    }
+
+    .fav-category {
+        font-size: 12px;
+    }
+
+    .fav-flex-box {
+        gap: 10px;
+    }
 }

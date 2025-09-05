@@ -6,7 +6,7 @@
 }
 
 .section-listai {
-    padding: 150px 0px;
+    padding: 120px 0px;
 }
 
 .box-input {
@@ -37,8 +37,12 @@
     color: var(--common-color-4);
     border-radius: 10px;
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 15px;
     transition: border 0.2s ease-in-out;
+}
+
+.sorted-by {
+    font-size: 13px;
 }
 
 .btn-sort {
@@ -49,7 +53,7 @@
 
 .btn-confronta {
     position: fixed;
-    top: 200px;
+    top: 120px;
     right: 0px;
     font-size: 20px;
     font-weight: bold;
@@ -62,6 +66,7 @@
     cursor: pointer;
     transform: translate(100%);
     animation: slideInRight 0.5s ease-out forwards;
+    z-index: 9999;
 }
 
 @keyframes slideInRight {
@@ -78,4 +83,10 @@
 
 .no-result-serch {
     font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .search-input {
+        margin-bottom: 10px;
+    }
 }

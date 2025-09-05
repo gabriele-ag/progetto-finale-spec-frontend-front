@@ -77,3 +77,9 @@
     margin-top: 50px;
     border-bottom: 1px solid black;
 }
+
+@media screen and (max-width: 375px) {
+    .card-btn-box {
+        display: flex;
+    }
+}

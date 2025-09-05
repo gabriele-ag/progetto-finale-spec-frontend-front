@@ -76,6 +76,7 @@ const ListaIA = () => {
 
             <main>
 
+
                 <section className="section-listai">
 
                     {/* Pulsante per il confronto */}
@@ -122,7 +123,7 @@ const ListaIA = () => {
 
                                 {/* Pulsante per ordinamento */}
                                 <div>
-                                    Ordina da: 
+                                    <span className="sorted-by">Ordina da:</span> 
                                     <button 
                                     className="btn-sort" 
                                     onClick={() => setSorted(!sorted)}
@@ -135,6 +136,7 @@ const ListaIA = () => {
                         </div>
 
                         {/* Elenco delle IA */}
+                        
                         <ul>
                             {filteredAI.length === 0 ? (
                                 <p className="no-result-serch">Nessun risultato. Cosa stai cercando? 🤔</p>
@@ -154,6 +156,7 @@ const ListaIA = () => {
                                 ))
                             )}
                         </ul>
+                        
                         
                         
 

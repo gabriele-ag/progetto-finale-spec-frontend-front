@@ -23,11 +23,11 @@ const Preferiti = () => {
                     <ul>
                         {favorites.map((curElem, index) => (
                             <div key={index} className="fav-flex-box">
-                                <li key={index}>
-                                    <h3>{curElem.title}</h3>
+                                <li key={index} className="fav-ai-box">
+                                    <h3 className="fav-title-ai">{curElem.title}</h3>
                                     <p className="fav-category">{curElem.category}</p>
                                 </li>
-                                <div>
+                                <div className="fav-btn-flex">
                                     <Link to={`/listaia/${curElem.id}`} className="fav-btn-details">Vedi dettagli</Link>
                                     <button className="fav-btn-erase" onClick={() => removeFromFavorites(curElem)}>
                                         <i className="fa-solid fa-trash"></i>
