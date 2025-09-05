@@ -1,0 +1,67 @@
+:root {
+    --common-color-1: #181817;
+    --common-color-2: #F1D302;
+    --common-color-3: #00BFA6;
+    --common-color-4: #FFFFFF;
+}
+
+.burger-container {
+    display: none;
+    position: relative;
+}
+
+.btn-burger {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--common-color-1);
+    display: none;
+}
+
+.burger-nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: var(--common-color-1);
+    width: 100%;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+}
+
+.burger-nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.burger-nav ul {
+    padding: 20px;
+    margin: 0;
+}
+
+.burger-link {
+    display: block;
+    color: var(--common-color-4);
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .burger-container {
+        display: block;
+    }
+
+    .btn-burger {
+        display: block;
+    }
+
+    .burger-nav {
+        display: block;
+    }
+}

@@ -8,8 +8,9 @@ import Home from "./Pages/Home"
 import ListaIA from "./Pages/ListaIA"
 import DettagliIA from "./Pages/DettagliIA"
 import Preferiti from "./Pages/Preferiti"
+import NotFound from "./Pages/404NotFound"
 
-// importo i dati globalmente
+// importo il GlobalProvider
 import { GlobalProvider } from "./contexts/GlobalContext"
 
 
@@ -21,6 +22,7 @@ function App() {
     <GlobalProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="*" element={<NotFound />} />                    
           <Route element={<GuestLayout/>}>
             <Route path="/" element={<Home />} />
             <Route path="/listaia" element={<ListaIA />} />

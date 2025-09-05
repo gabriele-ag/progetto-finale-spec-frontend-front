@@ -6,13 +6,20 @@
 }
 
 header {
-    background-color: var(--common-color-4);
+    position: relative;
+    background-color: transparent;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     padding: 0px 100px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 
@@ -22,12 +29,14 @@ header {
     font-weight: bold;
 }
 
+
 .flex-nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
+
 
 .navlink {
     color: var(--common-color-1);
@@ -38,4 +47,14 @@ header {
 
 .navlink:hover {
     color: var(--common-color-3);
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .flex-nav-header {
+        display: none;
+    }
+
+    
 }

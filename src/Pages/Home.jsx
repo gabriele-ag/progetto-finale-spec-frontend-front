@@ -15,7 +15,7 @@ const Home = () => {
                             <Link to={`/listaia`} className="home-btn">Sfoglia il catalogo!</Link>
                         </div>
                         <div className="home-arrow">
-                            <i class="fa-solid fa-arrow-up arrow-animation"></i>
+                            <i className="fa-solid fa-arrow-up arrow-animation"></i>
                         </div>
                     </div>
                 </div>

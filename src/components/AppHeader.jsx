@@ -1,9 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+
+import BurgerMenu from './BurgerMenu';
 
 // CSS
 import "./CSS/AppHeader.css"
 
 const AppHeader = () => {
+
+    const [openMenu, setOpenMenu] = useState(false)
+
     const linkNav = [
     {
         title: "Home",
@@ -22,7 +28,7 @@ const AppHeader = () => {
 
     return (
         <header>    
-                <div>
+                <div className="logo-container">
                     <h2 className="logo"><i className="fa-solid fa-brain"></i></h2>
                 </div>
 
@@ -35,6 +41,7 @@ const AppHeader = () => {
                             </li>
                         ))}
                     </ul>  
+                    <BurgerMenu links={linkNav}/>
                 </nav>
         </header>
     );

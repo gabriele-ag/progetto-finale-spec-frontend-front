@@ -127,7 +127,7 @@ const ListaIA = () => {
                                     className="btn-sort" 
                                     onClick={() => setSorted(!sorted)}
                                     >
-                                        {sorted ? <i className="fa-solid fa-arrow-up-a-z"></i> : <i className="fa-solid fa-arrow-down-z-a"></i>}
+                                        {sorted ? <i className="fa-solid fa-arrow-up-a-z"></i> : <i class="fa-solid fa-arrow-down-z-a"></i>}
                                     </button>
                                 </div>
 
@@ -147,11 +147,8 @@ const ListaIA = () => {
                                     subtitle={curElem.category}
                                     details={curElem.id}
                                     toggle={() => toggleAISelected(curElem)}
-                                    addRemCompare={
-                                        selectedAI.find((curItem) => curItem.id === curElem.id)
-                                        ? "Rimuovi"
-                                        : "Metti a confronto"
-                                    }
+                                    addRemCompare={selectedAI.find((curItem) => curItem.id === curElem.id)? "Rimuovi": "Metti a confronto"}
+                                    disabledCompare={selectedAI.length >= 3 && !selectedAI.find((curItem) => curItem.id === curElem.id)}
                                     />
                                 </li>
                                 ))

@@ -56,6 +56,11 @@
     cursor: pointer;
 }
 
+.btn-compare.disabled {
+    opacity: 0.3;
+    cursor: not-allowed
+}
+
 .btn-fav {
     background-color: transparent;
     border: transparent;

@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import useList from "../hook/useList"
 import { GlobalContext } from "../contexts/GlobalContext"
 import { Link } from "react-router-dom"
 
@@ -23,7 +22,7 @@ const Preferiti = () => {
                 ) : (
                     <ul>
                         {favorites.map((curElem, index) => (
-                            <div className="fav-flex-box">
+                            <div key={index} className="fav-flex-box">
                                 <li key={index}>
                                     <h3>{curElem.title}</h3>
                                     <p className="fav-category">{curElem.category}</p>
@@ -31,7 +30,7 @@ const Preferiti = () => {
                                 <div>
                                     <Link to={`/listaia/${curElem.id}`} className="fav-btn-details">Vedi dettagli</Link>
                                     <button className="fav-btn-erase" onClick={() => removeFromFavorites(curElem)}>
-                                        <i class="fa-solid fa-trash"></i>
+                                        <i className="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
                             </div>
