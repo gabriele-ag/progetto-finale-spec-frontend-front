@@ -6,7 +6,7 @@
 }
 
 .home-section {
-    padding: 250px 0px;
+    padding: 100px 0px;
 }
 
 .home-flex {
@@ -69,4 +69,22 @@
     0% {transform: translateY(0);}
     50% {transform: translateY(-10px);}
     100% {transform: translateY(0);}
+}
+
+/* TABLET */
+
+@media screen and (max-width: 768px) {
+    .home-title {
+        font-size: 80px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .home-title {
+        font-size: 50px;
+    }
+
+    .home-subtitle {
+        margin-bottom: 60px;
+    }
 }
