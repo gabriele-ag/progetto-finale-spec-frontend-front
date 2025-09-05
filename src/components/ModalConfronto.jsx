@@ -1,5 +1,6 @@
 import "./CSS/ModalConfronto.css"
 import { Link } from "react-router-dom"
+import { useEffect } from "react";
 
 const ModalConfronto = ({isOpen, onClose, items}) => {
 
@@ -36,26 +37,115 @@ const ModalConfronto = ({isOpen, onClose, items}) => {
             <div className="modal-content">
                 <button className="modal-btn-close" onClick={onClose}><i className="fa-solid fa-xmark"></i></button>
                 <h3 className="modal-title">Compara IA</h3>
-                <div className="modal-ai">
-                    {maxItemsComparable.map((curItem) =>(
-                        <div key={curItem.id}>
-                            <img className="modal-ailogo" src={curItem.logoUrl} alt="" />
-                            <h2 className="modal-ai-title">{curItem.title}</h2>
-                            <p className="modal-rating">Voto: {ratingIcon(curItem.rating)}</p>
-                            <p className="modal-margin">Pensato per: {curItem.category}</p>
-                            <p className="modal-margin">Cosa fa ? {curItem.description}</p>
-                            <p className="modal-margin">Utile per: {curItem.useCases.join(" ")}</p>
-                            <p className="modal-margin">Integrato in: {curItem.integrations.join(", ")}</p>
-                            <p className="modal-margin">Anno di rilascio: {curItem.releaseYear}</p>
-                            <p className="modal-margin">Prezzo: {curItem.price}</p>
-                            <p className="modal-margin">Piattaforme supportate: {curItem.platforms.join(" ")}</p>
-                            <p className="modal-margin">Livello di privacy: {curItem.privacyLevel}</p>
-                            <p className="modal-margin">È gratuito? {curItem.hasFreeVersion === true ? "Sì" : "No"}</p>
-                            <p className="modal-margin">Lingue supportate: {curItem.supportedLanguages.join(" ")}</p>
-                            <p className="modal-margin">API disponibile: {curItem.apiAvailable === true ? "Sì" : "No"}</p>
-                            <Link className="modal-link-website" to={curItem.website}>Sito web: {curItem.website}</Link>                            
-                        </div>
-                    ))}
+                <div className="modal-ai modal-table-wrapper">                   
+                            <table className="modal-compare-table">
+                            <thead>
+                                <tr>
+                                <th>Caratteristica</th>
+                                {maxItemsComparable.map((curElem) => (
+                                    <th key={curElem.id}>{curElem.title}</th>
+                                ))}
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                <td className="modal-feature-title">Rating</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td className="modal-rating" key={`rating-${curElem.id}`}>{ratingIcon(curElem.rating)}</td>
+                                ))}
+
+                                </tr>
+                                
+                                <tr>
+                                <td className="modal-feature-title">Brand</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`desc-${curElem.id}`}>{curElem.brand}</td>
+                                    ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">Descrizione</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`desc-${curElem.id}`}>{curElem.description}</td>
+                                    ))}
+                                </tr>
+                                <tr>
+
+                                <td className="modal-feature-title">Usato per</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}>{curElem.useCases.join(", ")}</td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">Prezzo</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`price-${curElem.id}`}>{curElem.price}</td>
+                                ))}
+                                </tr>
+                                
+                                <tr>
+                                <td className="modal-feature-title">Privacy</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`privacy-${curElem.id}`}>{curElem.privacyLevel}</td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">Lingue supportate</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}>{curElem.supportedLanguages.join(", ")}</td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">Piattaforma</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}>{curElem.platforms.join(", ")}</td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">Integrazione</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}>{curElem.integrations.join(", ")}</td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">Anno di rilascio</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}>{curElem.releaseYear}</td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">V. Gratuita?</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}>{curElem.hasFreeVersion === true ? "Sì" : "No"}</td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">Sito Web</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}><Link className="modal-website-ai">{curElem.website}</Link></td>
+                                ))}
+                                </tr>
+
+                                <tr>
+                                <td className="modal-feature-title">API</td>
+                                {maxItemsComparable.map((curElem) => (
+                                    <td key={`lang-${curElem.id}`}>{curElem.apiAvailable === true ? "Sì" : "No"}</td>
+                                ))}
+                                </tr>
+
+                                
+                            </tbody>
+                            </table>
+                        
+                    
                 </div>
             </div>
         </div>
