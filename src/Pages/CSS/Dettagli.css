@@ -16,7 +16,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
     font-size: 50px;
     margin-bottom: 25px;  
 }
@@ -76,10 +77,11 @@
 }
 
 .section-details {
-    padding: 150px 0;
+    padding: 150px 0px;
     display: flex;
     align-items: center;
     text-align: center;
+    gap: 20px;
 }
 
 
@@ -93,5 +95,36 @@
 }
 
 /* Tablet */
+
+@media screen and (max-width: 768px) {
+
+    .section-details {
+        flex-direction: column;
+        gap: 100px;
+    }
+
+
+    .details-logo {
+        width: 40px;
+    }
+
+    .details-title {
+        font-size: 60px;
+    }
+
+}
+
 /* Mobile */
+
+@media screen and (max-width: 425px) {
+
+    .site-text,
+    .link-website {
+        font-size: 16px;
+    }
+
+    .details-title {
+        font-size: 40px;
+    }
+}
 

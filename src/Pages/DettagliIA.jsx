@@ -51,11 +51,11 @@ const DettagliIA = () => {
     return (
         <main>
             {singleAI === undefined ? (
-                <p>Caricamento...</p>
+                <p className="loading">Caricamento...</p>
             ) : singleAI === null ? (
                 <>
                     {/* PENSARE A QUESTA PARTE */}
-                    <p>L'intelligenza artificiale che stai cercando non esiste.</p>
+                    <h3 className="no-ai">L'intelligenza artificiale che stai cercando non esiste.</h3>
                 </>
             ) : (
                 <>
@@ -66,13 +66,13 @@ const DettagliIA = () => {
                         <h2 className="details-title">{singleAI.title}</h2>
                     </div>
                     <div className="container details-rating">
-                        <p>Rating: {ratingIcon(singleAI.rating)}</p>
+                        <p>Voto: {ratingIcon(singleAI.rating)}</p>
                     </div>
                 </section>
 
                 {/* Sezione sito web */}
                 <section className="details-website-section">
-                    <p>Sito web:</p>
+                    <p className="site-text">Sito web:</p>
                     <Link className="link-website" to={singleAI.website}>{singleAI.website}</Link>
                 </section>
 
