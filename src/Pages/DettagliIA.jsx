@@ -16,11 +16,7 @@ const DettagliIA = () => {
    useEffect(() => {
         const fetchAIdata = async () => {
             const data = await getSingleAI(id)
-            if (!data) {
-                navigate("/not-found")
-            } else {
-                setSingleAI(data)
-            }
+                setSingleAI(data)         
         }
 
         fetchAIdata()
@@ -55,7 +51,10 @@ const DettagliIA = () => {
             ) : singleAI === null ? (
                 <>
                     {/* PENSARE A QUESTA PARTE */}
-                    <h3 className="no-ai">L'intelligenza artificiale che stai cercando non esiste.</h3>
+                    <div className="container no-ai-box">
+                        <h3 className="no-ai-title">L'intelligenza artificiale che stai cercando non esiste ⚠️</h3>
+                        <Link className="no-ai-btn" onClick={() => navigate(-1)}>Torna indietro</Link>
+                    </div>
                 </>
             ) : (
                 <>

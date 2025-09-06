@@ -94,6 +94,37 @@
     margin-bottom: 15px;
 }
 
+
+
+/* AI NON TROVATA */
+
+.no-ai-box {
+    padding: 150px 0px;
+    text-align: center;
+}
+
+.no-ai-title {
+    margin-bottom: 30px;
+}
+
+.no-ai-btn {
+    background-color: var(--common-color-3);
+    color: var(--common-color-4);
+    padding: 10px 8px;
+    border-radius: 10px;
+    transition: color 0.5s ease-in-out;
+    border: 1px solid var(--common-color-3);
+}
+
+.no-ai-btn:hover {
+    background-color: transparent;
+    color: var(--common-color-1);
+    border-color: var(--common-color-1);
+}
+
+
+/* MEDIAQUERY */
+
 /* Tablet */
 
 @media screen and (max-width: 768px) {
