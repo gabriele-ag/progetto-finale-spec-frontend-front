@@ -7,7 +7,7 @@
 
 header {
     position: relative;
-    background-color: transparent;
+    background-color: var(--common-color-4);
     width: 100%;
     display: flex;
     justify-content: space-between;

@@ -1,10 +1,16 @@
 import { useState, useEffect, useCallback } from "react"
-import { useNavigate } from "react-router-dom"
 
 const useList = () => {
 
     const [listAI, setListAI] = useState([])
-    const [favorites, setFavorites] = useState([])
+    const [favorites, setFavorites] = useState(() => {
+        const saved = window.localStorage.getItem("favorites")
+        return saved ? JSON.parse(saved) : [];
+    })
+
+        useEffect(() => {
+            window.localStorage.setItem("favorites", JSON.stringify(favorites))
+        }, [favorites])
        
         // Importo l'URL dal .env
         const urlList = import.meta.env.VITE_API_URL;

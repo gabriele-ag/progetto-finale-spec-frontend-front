@@ -5,6 +5,9 @@ import "./CSS/Home.css"
 const Home = () => {
     return (
         <main>       
+                <video autoPlay muted loop playsInline className="video-bg">
+                    <source src="/Home-video.mp4" type="video/mp4" />
+                </video>
             <section className="home-section">
                 <div className="home-flex">
                     <div className="container home-box">
