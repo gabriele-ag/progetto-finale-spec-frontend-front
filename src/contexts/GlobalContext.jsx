@@ -8,11 +8,11 @@ const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
     
-    const {listAI, getListAI, getSingleAI, addToFavorites, removeFromFavorites, favorites} = useList()
+    const {listAI, getListAI, getSingleAI, addToFavorites, removeFromFavorites, favorites, createNewAI, updateAI, deleteAI} = useList()
 
     return (
         <GlobalContext.Provider
-            value={{listAI, getListAI, getSingleAI, addToFavorites, removeFromFavorites, favorites}}
+            value={{listAI, getListAI, getSingleAI, addToFavorites, removeFromFavorites, favorites, createNewAI, updateAI, deleteAI}}
         >
             {children}
         </GlobalContext.Provider>

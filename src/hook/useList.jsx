@@ -65,6 +65,80 @@ const useList = () => {
             }
         }, [urlList])
 
+
+        // CRUD 
+        
+        const createNewAI = useCallback(async (newAI) => {
+            try {
+                const response = await fetch(`${urlList}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "Application/json"
+                    },
+                    body: JSON.stringify(newAI)
+                })
+
+                if (!response.ok) {
+                    throw new error(`Errore nella creazione del nuovo elemento: ${response.status}`)
+                }
+
+                const dataCreated = await response.json()
+                setListAI(curElem => [...curElem, dataCreated])
+                return data
+
+            } catch(error) {
+                throw new error(`Errore nella creazione del nuovo elemento: ${error.message}`)
+            }
+
+        }, [urlList])
+
+
+            const updateAI = useCallback(async (id, updatedAI) => {
+            try {
+                const response = await fetch(`${urlList}/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "Application/json"
+                    },
+                    body: JSON.stringify(updatedAI)
+                })
+
+                if (!response.ok) {
+                    throw new error(`Errore nella creazione del nuovo elemento: ${response.status}`)
+                }
+
+                const dataUpdated = await response.json()
+                setListAI(curElem => curElem.map(curAI => curAI.id === id ? dataUpdated : curAI ))
+                return dataUpdated
+
+
+            } catch(error) {
+                throw new error(`Errore nella creazione del nuovo elemento: ${error.message}`)
+            }
+
+        }, [urlList])
+
+
+        const deleteAI = useCallback(async (id) => {
+            try {
+                const response = await fetch(`${urlList}/${id}`, {
+                    method: "DELETE"
+                })
+
+                if (!response.ok) {
+                    throw new error(`Errore nella creazione del nuovo elemento: ${response.status}`)
+                }
+
+                setListAI(curElem => curElem.filter(curIA => curIA.id !== id))
+                return true
+            } catch(error) {
+                throw new error(`Errore nella creazione del nuovo elemento: ${error.message}`)
+            }
+
+        }, [urlList])
+
+
+
         useEffect(() => {
             getListAI()
         }, [getListAI])
@@ -89,7 +163,10 @@ const useList = () => {
             getSingleAI,
             addToFavorites,
             removeFromFavorites,
-            favorites
+            favorites,
+            createNewAI,
+            updateAI,
+            deleteAI
         }
 }
 

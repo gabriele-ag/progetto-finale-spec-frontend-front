@@ -50,7 +50,6 @@ const DettagliIA = () => {
                 <p className="loading">Caricamento...</p>
             ) : singleAI === null ? (
                 <>
-                    {/* PENSARE A QUESTA PARTE */}
                     <div className="container no-ai-box">
                         <h3 className="no-ai-title">L'intelligenza artificiale che stai cercando non esiste ⚠️</h3>
                         <Link className="no-ai-btn" onClick={() => navigate(-1)}>Torna indietro</Link>
