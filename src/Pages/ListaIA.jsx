@@ -1,8 +1,6 @@
 import { GlobalContext } from "../contexts/GlobalContext"
 import { useState, useMemo, useContext } from "react"
 
-import { useNavigate } from "react-router-dom"
-
 // Import della card
 import CardAI from "../components/CardAI"
 
@@ -22,7 +20,6 @@ const ListaIA = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [detailedAI, setDetailedAI] = useState([]);
 
-    const navigate = useNavigate();
     
     const debounceSearch = useDebounce(search, 700)
 
@@ -128,7 +125,7 @@ const ListaIA = () => {
                                     className="btn-sort" 
                                     onClick={() => setSorted(!sorted)}
                                     >
-                                        {sorted ? <i className="fa-solid fa-arrow-up-a-z"></i> : <i class="fa-solid fa-arrow-down-z-a"></i>}
+                                        {sorted ? <i className="fa-solid fa-arrow-up-a-z"></i> : <i className="fa-solid fa-arrow-down-z-a"></i>}
                                     </button>
                                 </div>
 
