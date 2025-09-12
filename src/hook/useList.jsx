@@ -27,9 +27,6 @@ const useList = () => {
                 if(!response.ok) {
                     throw new Error(`Errore nella risposta: ${response.status}`)
                 }
-    
-                // Verifico se i dati arrivano correttamente, in console
-                console.log(data)
                 
                 setListAI(data)
                 return data
@@ -73,21 +70,23 @@ const useList = () => {
                 const response = await fetch(`${urlList}`, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "Application/json"
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify(newAI)
                 })
 
                 if (!response.ok) {
-                    throw new error(`Errore nella creazione del nuovo elemento: ${response.status}`)
+                    const errorData = await response.json();
+                    console.error("Errore dal backend:", errorData);
+                    throw new Error(errorData.message || "Errore nella richiesta");
                 }
 
                 const dataCreated = await response.json()
                 setListAI(curElem => [...curElem, dataCreated])
-                return data
+                return dataCreated
 
             } catch(error) {
-                throw new error(`Errore nella creazione del nuovo elemento: ${error.message}`)
+                throw new Error(`Errore nella creazione del nuovo elemento: ${error.message}`);
             }
 
         }, [urlList])

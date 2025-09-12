@@ -21,6 +21,11 @@
     margin-bottom: 25px;
 }
 
+.card-btn-box {
+    display: flex;
+    flex-direction: row;
+}
+
 .btn-details {
     border: 1px solid var(--common-color-3);
     border-radius: 5px;
@@ -31,6 +36,7 @@
     font-weight: bold;
     transition: color 0.5s ease-in-out;
     margin-right: 15px;
+    text-align: center;
 }
 
 .btn-details:hover {
@@ -62,10 +68,12 @@
 }
 
 .btn-fav {
+    color: var(--common-color-1);
     background-color: transparent;
     border: transparent;
     font-size: 20px;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .btn-fav-full, 
@@ -73,13 +81,46 @@
     color: var(--common-color-2);
 }
 
+.btn-delete {
+    border: transparent;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
 .card-separator {
     margin-top: 50px;
     border-bottom: 1px solid black;
 }
 
+.btn-edit {
+    color: var(--common-color-1);
+    font-size: 20px;
+    border: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.card-btn-box2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+
 @media screen and (max-width: 375px) {
     .card-btn-box {
-        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-fav,
+    .btn-details,
+    .btn-compare {
+        margin-right: 0;
+    }
+
+    .card-btn-box2 {
+        justify-content: space-around;
     }
 }

@@ -9,6 +9,7 @@ import ListaIA from "./Pages/ListaIA"
 import DettagliIA from "./Pages/DettagliIA"
 import Preferiti from "./Pages/Preferiti"
 import NotFound from "./Pages/404NotFound"
+import AggiungiIA from "./Pages/AggiungIA"
 
 // importo il GlobalProvider
 import { GlobalProvider } from "./contexts/GlobalContext"
@@ -28,6 +29,7 @@ function App() {
             <Route path="/listaia" element={<ListaIA />} />
             <Route path="/listaia/:id" element={<DettagliIA/>}/>
             <Route path="/preferiti" element={<Preferiti/>}/>
+            <Route path="/aggiungiia" element={<AggiungiIA/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,17 +1,30 @@
 import { GlobalContext } from "../contexts/GlobalContext"
-import { useState, useMemo, useContext } from "react"
+import { useState, useMemo, useContext, useEffect } from "react"
 
 // Import della card
 import CardAI from "../components/CardAI"
 
 // CSS
 import "./CSS/ListAI.css"
+
+// Import dei modali
 import ModalConfronto from "../components/ModalConfronto"
+import ModalModifica from "../components/ModalModifica"
+
 
 // Import del Debounce
 import useDebounce from "../hook/useDebounce"
 
+
+
 const ListaIA = () => {
+
+    // GlobalContext per richiamo degli elementi dal back-end
+    const { getListAI, listAI, getSingleAI, updateAI, deleteAI } = useContext(GlobalContext)
+
+    useEffect(() => {
+        getListAI();
+    }, []);
 
     const [search, setSearch] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("")
@@ -20,11 +33,19 @@ const ListaIA = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [detailedAI, setDetailedAI] = useState([]);
 
-    
+
+    // Variabili di stato per cancellazione
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [aiToDelete, setAiToDelete] = useState(null);
+
+    // Variabili di stato per modifica IA
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+    const [toEdit, setToEdit] = useState(null)
+
+    // debounce
     const debounceSearch = useDebounce(search, 700)
 
-    const { listAI, getSingleAI } = useContext(GlobalContext)
-
+    
     const handleForm = (event) => {
         event.preventDefault()
     }
@@ -35,8 +56,9 @@ const ListaIA = () => {
 
         // Filtri per ricerca titolo e per selezione categoria
         const filtered = listAI.filter((elem) => {
-            const matchText = elem.title.toLowerCase().includes(search.toLowerCase()) 
-            const matchSelectedCategory = selectedCategory === "" || elem.category.trim().toLowerCase() === selectedCategory.trim().toLowerCase()
+            const matchText = typeof elem.title === "string" && elem.title.toLowerCase().includes(search.toLowerCase());
+
+            const matchSelectedCategory = selectedCategory === "" || (typeof elem.category === "string" && elem.category.trim().toLowerCase() === selectedCategory.trim().toLowerCase());
 
             return matchText && matchSelectedCategory
         })
@@ -66,6 +88,49 @@ const ListaIA = () => {
         setDetailedAI(results)
         setIsModalOpen(true)
     }
+
+    // Funzioni per la cancellazione e modifica della IA
+    const confirmDeleteAI = (ai) => {
+        setAiToDelete(ai);
+        setIsDeleteModalOpen(true);
+    };
+
+    const confirmEditAI = (ai) => {
+        setToEdit(ai)
+        setIsEditModalOpen(true)
+    }
+
+    // Gestione della cancellazione
+    const handleDeleteAI = async () => {
+        if (!aiToDelete) return;
+
+        try {
+            await deleteAI(aiToDelete.id);
+            alert(`Hai eliminato con successo:"${aiToDelete.title}"`);
+            setIsDeleteModalOpen(false);
+            setAiToDelete(null);
+        } catch (error) {
+            console.error("Errore nell'eliminazione della IA:", error.message);
+            alert("Errore durante l'eliminazione della IA.");
+        }
+    };
+
+    // Gestione della modifica
+    const handleEditAI = async (editedAI) => {
+        try {
+            await updateAI(toEdit.id, editedAI)
+            await getListAI()
+            alert(`IA ${toEdit.title} modificata!`)
+            setIsEditModalOpen(false)
+            setToEdit(null)
+            console.log("Dati inviati:", editedAI);
+        } catch(error) {
+            console.error("Errore nella modifica:", error.message)
+            alert("Errore durante la modifica della IA")
+        }
+    }
+
+
 
 
     return (
@@ -148,19 +213,41 @@ const ListaIA = () => {
                                     toggle={() => toggleAISelected(curElem)}
                                     addRemCompare={selectedAI.find((curItem) => curItem.id === curElem.id)? "Rimuovi": "Metti a confronto"}
                                     disabledCompare={selectedAI.length >= 3 && !selectedAI.find((curItem) => curItem.id === curElem.id)}
+                                    onDelete={() => confirmDeleteAI(curElem)}
+                                    onEdit={() => confirmEditAI(curElem)}
                                     />
                                 </li>
                                 ))
                             )}
                         </ul>
-                        
-                        
-                        
 
+                        {isDeleteModalOpen && (
+                        <div className="modal-overlay-delete">
+                            <div className="modal-content-delete">
+                                <h3>Conferma eliminazione</h3>
+                                <p className="modal-p">Vuoi davvero eliminare <span>{aiToDelete?.title}</span>?</p>
+                                <div className="modal-box-btn">
+                                    <button onClick={handleDeleteAI} className="btn-confirm-delete">Conferma</button>
+                                    <button onClick={() => setIsDeleteModalOpen(false)} className="btn-cancel-delete">Annulla</button>
+                                </div>
+                            </div>
+                        </div>
+                        )}
+                        
+                        
                         <ModalConfronto
                         items={detailedAI}
                         isOpen={isModalOpen}
                         onClose={() => setIsModalOpen(false)}/>
+
+
+                        {isEditModalOpen && (
+                            <ModalModifica
+                            elemAI={toEdit}
+                            onClose={() => setIsEditModalOpen(false)}
+                            onSubmit={handleEditAI}/>
+                        )}
+                        
 
                     </div>
                 </section>
