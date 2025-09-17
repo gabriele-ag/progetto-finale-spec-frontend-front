@@ -1,5 +1,7 @@
 import "./CSS/ModalConfronto.css"
 import { Link } from "react-router-dom"
+import ReactDOM from "react-dom";
+
 import { useEffect } from "react";
 
 const ModalConfronto = ({isOpen, onClose, items}) => {
@@ -32,7 +34,8 @@ const ModalConfronto = ({isOpen, onClose, items}) => {
         return icons
     }
 
-    return (
+    const modalContent = (
+        
         <div className="modal-overlay">
             <div className="modal-content">
                 <button className="modal-btn-close" onClick={onClose}><i className="fa-solid fa-xmark"></i></button>
@@ -144,12 +147,14 @@ const ModalConfronto = ({isOpen, onClose, items}) => {
                                 
                             </tbody>
                             </table>
-                        
-                    
+                                       
                 </div>
             </div>
         </div>
     )
+
+
+    return ReactDOM.createPortal(modalContent, document.getElementById("modal-root"));
 }
 
 export default ModalConfronto

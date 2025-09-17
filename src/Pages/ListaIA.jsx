@@ -48,7 +48,7 @@ const ListaIA = () => {
     
     const handleForm = (event) => {
         event.preventDefault()
-    }
+    };
 
 
     // Filtri per ricerca e ordinamento
@@ -79,7 +79,7 @@ const ListaIA = () => {
         } else {
             setSelectedAI([...selectedAI, elemAI]);
         }
-    }
+    };
 
     // Eseguo chiamata per prendere le info aggiuntive da mettere nel comparatore
     const fetchDetailsForCompare = async () => {
@@ -87,7 +87,7 @@ const ListaIA = () => {
         const results = await Promise.all(promises)
         setDetailedAI(results)
         setIsModalOpen(true)
-    }
+    };
 
     // Funzioni per la cancellazione e modifica della IA
     const confirmDeleteAI = (ai) => {
@@ -98,7 +98,7 @@ const ListaIA = () => {
     const confirmEditAI = (ai) => {
         setToEdit(ai)
         setIsEditModalOpen(true)
-    }
+    };
 
     // Gestione della cancellazione
     const handleDeleteAI = async () => {
@@ -128,16 +128,13 @@ const ListaIA = () => {
             console.error("Errore nella modifica:", error.message)
             alert("Errore durante la modifica della IA")
         }
-    }
-
+    };
 
 
 
     return (
         <>
-
             <main>
-
 
                 <section className="section-listai">
 
@@ -153,7 +150,6 @@ const ListaIA = () => {
 
                     {/* Container */}
                     <div className="container">
-
 
                     {/* Input per i filtri */}
                         <div>

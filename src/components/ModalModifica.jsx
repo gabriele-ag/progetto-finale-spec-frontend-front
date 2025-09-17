@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import ReactDOM from "react-dom";
 
 import "./CSS/ModalModifica.css"
 
@@ -80,9 +81,8 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
   };
 
 
-
-    return (
-        <div className="edit-modal-overlay">
+  const modalContent = (
+    <div className="edit-modal-overlay">
             <div className="edit-modal-content container">
                 <h2>Modifica IA</h2>
                 <form onSubmit={handleSubmit} className="edit-modal-form">
@@ -248,7 +248,13 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
                 </form>
             </div>
         </div>
-    )
+  )
+
+  const modalRoot = document.getElementById("modal-root");
+    if (!elemAI || !modalRoot) return null;
+
+
+    return ReactDOM.createPortal(modalContent, modalRoot);
 }
 
 export default ModalModifica

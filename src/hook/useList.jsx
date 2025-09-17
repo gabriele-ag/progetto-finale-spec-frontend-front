@@ -6,11 +6,11 @@ const useList = () => {
     const [favorites, setFavorites] = useState(() => {
         const saved = window.localStorage.getItem("favorites")
         return saved ? JSON.parse(saved) : [];
-    })
+    });
 
         useEffect(() => {
             window.localStorage.setItem("favorites", JSON.stringify(favorites))
-        }, [favorites])
+        }, [favorites]);
        
         // Importo l'URL dal .env
         const urlList = import.meta.env.VITE_API_URL;
@@ -35,7 +35,7 @@ const useList = () => {
             } finally {
                 console.log("Dati ricevuti con successo!")
             }
-        }, [urlList])
+        }, [urlList]);
     
     
         
@@ -60,7 +60,7 @@ const useList = () => {
             } finally {
                 console.log("Dati ricevuti con successo!")
             }
-        }, [urlList])
+        }, [urlList]);
 
 
         // CRUD 
@@ -89,10 +89,10 @@ const useList = () => {
                 throw new Error(`Errore nella creazione del nuovo elemento: ${error.message}`);
             }
 
-        }, [urlList])
+        }, [urlList]);
 
 
-            const updateAI = useCallback(async (id, updatedAI) => {
+        const updateAI = useCallback(async (id, updatedAI) => {
             try {
                 const response = await fetch(`${urlList}/${id}`, {
                     method: "PUT",
@@ -103,7 +103,7 @@ const useList = () => {
                 })
 
                 if (!response.ok) {
-                    throw new error(`Errore nella creazione del nuovo elemento: ${response.status}`)
+                    throw new Error(`Errore nella creazione del nuovo elemento: ${response.status}`)
                 }
 
                 const dataUpdated = await response.json()
@@ -112,10 +112,10 @@ const useList = () => {
 
 
             } catch(error) {
-                throw new error(`Errore nella creazione del nuovo elemento: ${error.message}`)
+                throw new Error(`Errore nella creazione del nuovo elemento: ${error.message}`)
             }
 
-        }, [urlList])
+        }, [urlList]);
 
 
         const deleteAI = useCallback(async (id) => {
@@ -125,22 +125,22 @@ const useList = () => {
                 })
 
                 if (!response.ok) {
-                    throw new error(`Errore nella creazione del nuovo elemento: ${response.status}`)
+                    throw new Error(`Errore nella creazione del nuovo elemento: ${response.status}`)
                 }
 
                 setListAI(curElem => curElem.filter(curIA => curIA.id !== id))
                 return true
             } catch(error) {
-                throw new error(`Errore nella creazione del nuovo elemento: ${error.message}`)
+                throw new Error(`Errore nella creazione del nuovo elemento: ${error.message}`)
             }
 
-        }, [urlList])
+        }, [urlList]);
 
 
 
         useEffect(() => {
             getListAI()
-        }, [getListAI])
+        }, [getListAI]);
 
 
         // Funzioni per l'aggiunzione e la rimozione dei preferiti
@@ -150,11 +150,11 @@ const useList = () => {
             const alreadyExists = prev.some((item) => item.id === curElem.id);
             return alreadyExists ? prev : [...prev, curElem];
             });
-        }
+        };
 
         const removeFromFavorites = (curElem) => {
             setFavorites((prev) => prev.filter((curFav) => curFav.id !== curElem.id))
-        }
+        };
         
         return {
             listAI,
@@ -166,7 +166,7 @@ const useList = () => {
             createNewAI,
             updateAI,
             deleteAI
-        }
+        };
 }
 
 export default useList
