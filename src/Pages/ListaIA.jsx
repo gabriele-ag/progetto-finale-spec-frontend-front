@@ -1,5 +1,5 @@
 import { GlobalContext } from "../contexts/GlobalContext"
-import { useState, useMemo, useContext, useEffect } from "react"
+import { useState, useMemo, useContext, useEffect, useCallback } from "react"
 
 // Import della card
 import CardAI from "../components/CardAI"
@@ -12,9 +12,19 @@ import ModalConfronto from "../components/ModalConfronto"
 import ModalModifica from "../components/ModalModifica"
 
 
-// Import del Debounce
-import useDebounce from "../hook/useDebounce"
+// Debounce
 
+const debounce = (callback, delay) => {
+    let timer;
+
+    return (value) => {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            callback(value)
+        }, delay)
+    }
+
+}
 
 
 const ListaIA = () => {
@@ -26,6 +36,7 @@ const ListaIA = () => {
         getListAI();
     }, []);
 
+    
     const [search, setSearch] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("")
     const [sorted, setSorted] = useState(true)
@@ -43,7 +54,7 @@ const ListaIA = () => {
     const [toEdit, setToEdit] = useState(null)
 
     // debounce
-    const debounceSearch = useDebounce(search, 700)
+    const debouncedSearch = useCallback(debounce((value) => setSearch(value), 500), [])
 
     
     const handleForm = (event) => {
@@ -70,7 +81,7 @@ const ListaIA = () => {
 
         return sortedByTitle
 
-    }, [listAI, selectedCategory, sorted, debounceSearch])
+    }, [listAI, selectedCategory, sorted, search])
 
 
      const toggleAISelected = (elemAI) => {
@@ -158,8 +169,7 @@ const ListaIA = () => {
                                     <input 
                                     type="text"
                                     placeholder="Cerca qui la tua IA..."
-                                    value={search}
-                                    onChange={(event) => setSearch(event.target.value)}
+                                    onChange={(e) => debouncedSearch(e.target.value)}
                                     className="search-input" />
 
                                     <select 

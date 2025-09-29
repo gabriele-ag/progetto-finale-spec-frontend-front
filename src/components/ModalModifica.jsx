@@ -25,10 +25,12 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
   const integrationsRef = useRef(null);
   const useCasesRef = useRef(null);
 
+  
   // Focus automatico sul campo "title"
   useEffect(() => {
     titleRef.current?.focus();
   }, []);
+
 
   const validateForm = () => {
     const newErrors = {};
@@ -41,6 +43,7 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
