@@ -6,6 +6,7 @@ import { GlobalContext } from "../contexts/GlobalContext";
 import "./CSS/CardAI.css"
 
 const cardAI = ({title, subtitle, details, toggle, addRemCompare, disabledCompare, onDelete, onEdit, id}) => {
+    
     const {favorites, addToFavorites, removeFromFavorites} = useContext(GlobalContext)
 
     const isFavorite = favorites.some((curFav) => curFav.id === id)

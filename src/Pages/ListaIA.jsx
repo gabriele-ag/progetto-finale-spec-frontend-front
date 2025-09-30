@@ -12,7 +12,7 @@ import ModalConfronto from "../components/ModalConfronto"
 import ModalModifica from "../components/ModalModifica"
 
 
-// Debounce
+// Funzione di Debounce
 
 const debounce = (callback, delay = 500) => {
     let timer;

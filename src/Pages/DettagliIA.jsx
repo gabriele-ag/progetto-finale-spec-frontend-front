@@ -7,8 +7,8 @@ import "./CSS/Dettagli.css"
 
 const DettagliIA = () => {
 
-    const {id} = useParams()
-    const navigate = useNavigate() // Per cosa lo sto utilizzando?
+    const { id } = useParams()
+    const navigate = useNavigate()
     const { getSingleAI } = useContext(GlobalContext)
 
     const [singleAI, setSingleAI] = useState(null)

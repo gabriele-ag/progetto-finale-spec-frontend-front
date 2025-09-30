@@ -1,5 +1,4 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useState } from 'react';
 
 import BurgerMenu from './BurgerMenu';
 
