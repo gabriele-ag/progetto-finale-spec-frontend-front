@@ -36,9 +36,9 @@ const AggiungiIA = () => {
         const newErrors = {};
 
         if (!titleRef.current.value.trim()) newErrors.title = "Il nome è obbligatorio.";
-        if (!categoryRef.current.value.trim()) newErrors.category = "La categoria è obbligatoria.";
+        if (!categoryRef.current.value) newErrors.category = "La categoria è obbligatoria.";
         if (!descriptionRef.current.value.trim()) newErrors.description = "La descrizione è obbligatoria.";
-        if (!privacyLevelRef.current.value.trim()) newErrors.privacyLevel = "Il livello di privacy è obbligatorio.";
+        if (!privacyLevelRef.current.value) newErrors.privacyLevel = "Il livello di privacy è obbligatorio.";
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -51,7 +51,7 @@ const AggiungiIA = () => {
 
         const newAI = {
             title: titleRef.current.value.trim(),
-            category: categoryRef.current.value.trim(),
+            category: categoryRef.current.value,
             description: descriptionRef.current.value.trim(),
             brand: brandRef.current.value.trim() || "🤔",
             website: websiteRef.current.value.startsWith("http") ? websiteRef.current.value.trim() : "🤔",
@@ -74,7 +74,7 @@ const AggiungiIA = () => {
             integrations: integrationsRef.current.value
             ? integrationsRef.current.value.split(",").map(e => e.trim())
             : ["🤔"],
-            privacyLevel: privacyLevelRef.current.value.trim(),
+            privacyLevel: privacyLevelRef.current.value,
             useCases: useCasesRef.current.value
             ? useCasesRef.current.value.split(",").map(e => e.trim())
             : ["🤔"]

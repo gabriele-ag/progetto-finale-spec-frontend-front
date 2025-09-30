@@ -1,14 +1,14 @@
 import { GlobalContext } from "../contexts/GlobalContext"
 import { useState, useContext, useEffect } from "react"
 
-import { useParams, Link, useNavigate} from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 
 import "./CSS/Dettagli.css"
 
 const DettagliIA = () => {
 
     const {id} = useParams()
-    const navigate = useNavigate()
+    const navigate = useNavigate() // Per cosa lo sto utilizzando?
     const { getSingleAI } = useContext(GlobalContext)
 
     const [singleAI, setSingleAI] = useState(null)

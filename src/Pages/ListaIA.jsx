@@ -14,7 +14,7 @@ import ModalModifica from "../components/ModalModifica"
 
 // Debounce
 
-const debounce = (callback, delay) => {
+const debounce = (callback, delay = 500) => {
     let timer;
 
     return (value) => {
@@ -36,7 +36,7 @@ const ListaIA = () => {
         getListAI();
     }, []);
 
-    
+
     const [search, setSearch] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("")
     const [sorted, setSorted] = useState(true)
@@ -54,7 +54,7 @@ const ListaIA = () => {
     const [toEdit, setToEdit] = useState(null)
 
     // debounce
-    const debouncedSearch = useCallback(debounce((value) => setSearch(value), 500), [])
+    const debouncedSearch = useCallback(debounce((value) => setSearch(value)), [])
 
     
     const handleForm = (event) => {
@@ -67,9 +67,9 @@ const ListaIA = () => {
 
         // Filtri per ricerca titolo e per selezione categoria
         const filtered = listAI.filter((elem) => {
-            const matchText = typeof elem.title === "string" && elem.title.toLowerCase().includes(search.toLowerCase());
+            const matchText = elem.title.toLowerCase().includes(search.toLowerCase());
 
-            const matchSelectedCategory = selectedCategory === "" || (typeof elem.category === "string" && elem.category.trim().toLowerCase() === selectedCategory.trim().toLowerCase());
+            const matchSelectedCategory = selectedCategory === "" || elem.category === selectedCategory;
 
             return matchText && matchSelectedCategory
         })
