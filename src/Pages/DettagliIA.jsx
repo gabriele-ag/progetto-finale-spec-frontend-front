@@ -16,7 +16,7 @@ const DettagliIA = () => {
    useEffect(() => {
         const fetchAIdata = async () => {
             const data = await getSingleAI(id)
-                setSingleAI(data)         
+            setSingleAI(data)         
         }
 
         fetchAIdata()
@@ -111,6 +111,7 @@ const DettagliIA = () => {
                             <h3 className="details-title-info">Altre info</h3>
                             <p className="details-description">Linguaggi supportati: {singleAI.supportedLanguages.join(", ")}</p>
                             <p className="details-description">Livello di privacy: {singleAI.privacyLevel}</p>
+                            <p className="details-description">Anno di rilascio: {singleAI.releaseYear}</p>
                         </div>
                     </div>
                 </section>

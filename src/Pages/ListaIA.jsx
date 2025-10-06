@@ -67,7 +67,7 @@ const ListaIA = () => {
 
         // Filtri per ricerca titolo e per selezione categoria
         const filtered = listAI.filter((elem) => {
-            const matchText = elem.title.toLowerCase().includes(search.toLowerCase());
+            const matchText = typeof elem.title === "string" && elem.title.toLowerCase().includes(search.toLowerCase());
 
             const matchSelectedCategory = selectedCategory === "" || elem.category === selectedCategory;
 

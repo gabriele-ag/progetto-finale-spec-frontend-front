@@ -106,9 +106,10 @@ const useList = () => {
                     throw new Error(`Errore nella creazione del nuovo elemento: ${response.status}`)
                 }
 
-                const dataUpdated = await response.json()
-                setListAI(curElem => curElem.map(curAI => curAI.id === id ? dataUpdated : curAI ))
-                return dataUpdated
+                const { aiproduct } = await response.json();
+                setListAI(curElem => curElem.map(curAI => curAI.id === id ? aiproduct : curAI ))
+                setFavorites(curElem => curElem.map(curFav => curFav.id === id ? aiproduct : curFav));
+                return aiproduct
 
 
             } catch(error) {
@@ -144,6 +145,7 @@ const useList = () => {
 
 
         // Funzioni per l'aggiunzione e la rimozione dei preferiti
+
         const addToFavorites = (curElem) => {
             console.log("Aggiungo ai preferiti:", curElem);
             setFavorites((prev) => {

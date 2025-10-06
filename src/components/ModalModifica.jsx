@@ -40,6 +40,16 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
     if (!descriptionRef.current.value.trim()) newErrors.description = "La descrizione è obbligatoria.";
     if (!privacyLevelRef.current.value) newErrors.privacyLevel = "Il livello di privacy è obbligatorio.";
 
+    const releaseYearValue = Number(releaseYearRef.current.value)
+        if (!releaseYearRef.current.value.trim() || isNaN(releaseYearValue) || releaseYearValue < 2018 || releaseYearValue > 2025) {
+            newErrors.releaseYear = "L'anno di rilascio deve essere compreso tra 2018 e 2025"
+        }
+
+    const ratingValue = Number(ratingRef.current.value)
+        if (!ratingRef.current.value.trim() || isNaN(ratingValue) || ratingValue < 0 || ratingValue > 5) {
+            newErrors.rating = "Il voto deve essere un numero tra 0 e 5"
+        }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -164,11 +174,13 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
                 <label>Anno di rilascio</label>
                 <input
                     ref={releaseYearRef}
-                    defaultValue={elemAI?.releaseYear || ""}
+                    min="2018"
+                    defaultValue={elemAI?.releaseYear || 2018}
                     className="editai-input"
                     type="number"
                     placeholder="Quando è stata rilasciato..."
                 />
+                {errors.releaseYear && <p className="error-msg">{errors.releaseYear}</p>}
 
                 <label>Integrato in:</label>
                 <input
@@ -191,11 +203,13 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
                 <label>Voto?</label>
                 <input
                     ref={ratingRef}
-                    defaultValue={elemAI?.rating || ""}
+                    min="0"
+                    defaultValue={elemAI?.rating || 0}
                     className="editai-input"
                     type="number"
                     placeholder="Immetti il voto..."
                 />
+                {errors.rating && <p className="error-msg">{errors.rating}</p>}
 
                 <label>URL del logo</label>
                 <input
