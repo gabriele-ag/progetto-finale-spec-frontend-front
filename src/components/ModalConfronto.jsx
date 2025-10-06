@@ -2,8 +2,6 @@ import "./CSS/ModalConfronto.css"
 import { Link } from "react-router-dom"
 import ReactDOM from "react-dom";
 
-import { useEffect } from "react";
-
 const ModalConfronto = ({isOpen, onClose, items}) => {
 
     // È aperto?

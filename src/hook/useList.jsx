@@ -130,6 +130,7 @@ const useList = () => {
                 }
 
                 setListAI(curElem => curElem.filter(curIA => curIA.id !== id))
+                setFavorites(curElem => curElem.filter(curFav => curFav.id !== id));
                 return true
             } catch(error) {
                 throw new Error(`Errore nella creazione del nuovo elemento: ${error.message}`)
