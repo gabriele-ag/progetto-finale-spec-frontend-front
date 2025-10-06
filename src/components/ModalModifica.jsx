@@ -37,7 +37,6 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
 
     if (!titleRef.current.value.trim()) newErrors.title = "Il nome è obbligatorio.";
     if (!categoryRef.current.value) newErrors.category = "La categoria è obbligatoria.";
-    if (!descriptionRef.current.value.trim()) newErrors.description = "La descrizione è obbligatoria.";
     if (!privacyLevelRef.current.value) newErrors.privacyLevel = "Il livello di privacy è obbligatorio.";
 
     const releaseYearValue = Number(releaseYearRef.current.value)
@@ -62,32 +61,32 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
     const editedAI = {
       title: titleRef.current.value.trim(),
       category: categoryRef.current.value,
-      description: descriptionRef.current.value.trim(),
+      description: descriptionRef.current.value.trim() || elemAI.description,
       privacyLevel: privacyLevelRef.current.value,
-      brand: brandRef.current?.value.trim() || "🤔",
-      website: websiteRef.current?.value.trim().startsWith("http") ? websiteRef.current.value.trim() : "🤔",
-      logoUrl: logoUrlRef.current?.value.trim().startsWith("http") ? logoUrlRef.current.value.trim() : "🤔",
-      price: priceRef.current?.value.trim() || "🤔",
+      brand: brandRef.current?.value.trim() || elemAI.brand,
+      website: websiteRef.current?.value.trim().startsWith("http") ? websiteRef.current.value.trim() : elemAI.website,
+      logoUrl: logoUrlRef.current?.value.trim().startsWith("http") ? logoUrlRef.current.value.trim() : elemAI.logoUrl,
+      price: priceRef.current?.value.trim() || elemAI.price,
       hasFreeVersion: hasFreeVersionRef.current?.checked || false,
       apiAvailable: apiAvailableRef.current?.checked || false,
       supportedLanguages: languagesRef.current?.value
         ? languagesRef.current.value.split(",").map(e => e.trim())
-        : ["🤔"],
+        : elemAI.supportedLanguages,
       platforms: platformsRef.current?.value
         ? platformsRef.current.value.split(",").map(e => e.trim())
-        : ["🤔"],
+        : elemAI.platforms,
       releaseYear: releaseYearRef.current?.value
         ? Number(releaseYearRef.current.value)
-        : 2025,
+        : elemAI.releaseYear,
       rating: ratingRef.current?.value
         ? Number(ratingRef.current.value)
-        : 0,
+        : elemAI.rating,
       integrations: integrationsRef.current?.value
         ? integrationsRef.current.value.split(",").map(e => e.trim())
-        : ["🤔"],
+        : elemAI.integrations,
       useCases: useCasesRef.current?.value
         ? useCasesRef.current.value.split(",").map(e => e.trim())
-        : ["🤔"]
+        : elemAI.useCases
     };
 
     onSubmit(editedAI);
@@ -140,7 +139,7 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
                     ref={descriptionRef}
                     defaultValue={elemAI?.description || ""}
                     className="editai-input"
-                    placeholder="Cosa fa la IA?..."
+                    placeholder="Metti una nuova descrizione oppure lascia vuoto per non effettuare alcuna modifica..."
                 />
                 {errors.description && <p className="error-msg">{errors.description}</p>}
 
