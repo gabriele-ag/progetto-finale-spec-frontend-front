@@ -174,7 +174,7 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
                 <input
                     ref={releaseYearRef}
                     min="2018"
-                    defaultValue={elemAI?.releaseYear || 2018}
+                    defaultValue={elemAI?.releaseYear}
                     className="editai-input"
                     type="number"
                     placeholder="Quando è stata rilasciato..."
@@ -203,7 +203,7 @@ const ModalModifica = ({elemAI, onClose, onSubmit}) => {
                 <input
                     ref={ratingRef}
                     min="0"
-                    defaultValue={elemAI?.rating || 0}
+                    defaultValue={elemAI?.rating}
                     className="editai-input"
                     type="number"
                     placeholder="Immetti il voto..."

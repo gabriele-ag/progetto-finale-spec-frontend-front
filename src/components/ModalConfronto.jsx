@@ -131,7 +131,7 @@ const ModalConfronto = ({isOpen, onClose, items}) => {
                                 <tr>
                                 <td className="modal-feature-title">Sito Web</td>
                                 {maxItemsComparable.map((curElem) => (
-                                    <td key={`lang-${curElem.id}`}><Link className="modal-website-ai">{curElem.website}</Link></td>
+                                    <td key={`lang-${curElem.id}`}><Link className="modal-website-ai" to={curElem.website}>{curElem.website}</Link></td>
                                 ))}
                                 </tr>
 
