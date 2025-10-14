@@ -24,4 +24,3 @@ Il progetto è una Web-App React di comparazione e catalogazione delle intellige
 - LocalStorage
 - Vite
 - FontAwesome per icone
-
